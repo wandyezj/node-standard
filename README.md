@@ -1,9 +1,9 @@
-# node-standard-file
+# node-standard
 
-Standard node file operations in nice wrappers.
+Standard node operations in nice wrappers.
 
 ## Import
 
 ```typescript
-import * as standardFile from "@wandyezj/node-standard-file";
+import * as standard from "@wandyezj/node-standard";
 ```

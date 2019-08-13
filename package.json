@@ -1,7 +1,7 @@
 {
-  "name": "@wandyezj/node-standard-file",
+  "name": "@wandyezj/node-standard",
   "version": "0.0.0",
-  "description": "Standard node file operations in nice wrappers.",
+  "description": "Standard node operations in nice wrappers.",
   "main": "dist/index.js",
   "types" : "dist/index.d.ts",
   "files": [
