@@ -1,5 +1,9 @@
 import * as fs from "fs";
 import * as path from "path";
+import * as list from "./list";
+
+export { default as list} from "./list";
+
 
 /**
  * Standard set of functions for doing basic things related to:
@@ -11,6 +15,7 @@ import * as path from "path";
  */
 
 // string manipulation
+
 
 /**
  * standardize newlines to proper unix line endings
@@ -37,25 +42,7 @@ export function insertTabs(str: string, numTabs: number = 1): string {
 
 // list manipulation
 
-/**
- * Remove all strings that are whitespace from the list.
- * @param list list of strings.
- */
-export function removeEmpty(list: string[]): string[] {
-    return list.map(
-        (x) => x.trim()
-    ).filter(
-        (x) => x !== ""
-    );
-}
 
-export function removeDuplicates<T>(data: T[]): T[] {
-
-    // only take the first item
-    return data.filter(
-        (value: T, index: number, array: T[]) => array.indexOf(value) === index
-    );
-}
 
 // reading and writing files
 
@@ -123,7 +110,7 @@ export function writeFileJson(path: string, data: {}): void {
  */
 export function readFileList(path: string): string[] {
     const data: string = readFile(path);
-    return removeEmpty(lineSplit(data));
+    return list.removeEmpty(lineSplit(data));
 }
 
 /**
@@ -143,7 +130,7 @@ export function writeFileList(path: string, data: string[]): void {
  * @param data list of paths to weite
  */
 export function writeFileListUnique(path: string, data: string[]): void {
-    const unique: string[] = removeDuplicates(data);
+    const unique: string[] = list.removeDuplicates(data);
     writeFileList(path, unique);
 }
 
