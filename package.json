@@ -1,5 +1,5 @@
 {
-  "name": "node-standard-file",
+  "name": "@wandyezj/node-standard-file",
   "version": "0.0.0",
   "description": "Standard node file operations in nice wrappers.",
   "main": "dist/index.js",
