@@ -6,6 +6,9 @@
 
 ## publish
 
+1. > npm version `patch`
+    * update the {patch, major, minor} version of the package
+
 1. > npm login
 
 1. > npm publish -access=public
