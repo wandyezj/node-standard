@@ -22,5 +22,5 @@ Node Types and TypeScript are the only dependencies.
 ## Standard Parameter Names
 
 * path
-* directory
-* file
+* string
+* list

@@ -1,7 +1,7 @@
 // directory manipulation
 
 import * as fs from 'fs';
-import * as path from 'path';
+import * as nodePath from 'path';
 
 /**
  * is the path a directory?
@@ -23,23 +23,23 @@ export function isFile(path: string): boolean {
 
 /**
  * get subdirectory names that exist in the provided directory path
- * @param directory path of the directory to get the sub directories of
+ * @param path path of the directory to get the sub directories of
  * @returns directory names
  */
-export function subDirectories(directory: string): string[] {
-    const all = fs.readdirSync(directory);
-    const directories = all.filter((sub) => isDirectory(path.join(directory, sub)));
+export function subDirectories(path: string): string[] {
+    const all = fs.readdirSync(path);
+    const directories = all.filter((sub) => isDirectory(nodePath.join(path, sub)));
     return directories.sort();
 }
 
 /**
  * retrieves the file names present in the directory
- * @param directory path of the directory to get the files in
+ * @param path path of the directory to get the files in
  * @returns list of file names in the directory
  */
-export function files(directory: string): string[] {
-    const all = fs.readdirSync(directory);
-    const files = all.filter((file) => isFile(path.join(directory, file)));
+export function files(path: string): string[] {
+    const all = fs.readdirSync(path);
+    const files = all.filter((file) => isFile(nodePath.join(path, file)));
     // paths are sorted because determinism is convenient for testing and reproduction of issues.
     return files.sort();
 }
