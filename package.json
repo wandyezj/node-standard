@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/wandyezj/standard-node#readme",
   "dependencies": {
-    "@types/node": "^12.7.1"
+    "@types/node": "10.14.15"
   },
   "devDependencies": {
     "typescript": "^3.5.3"

@@ -1,3 +1,5 @@
+// These types would be convenient to have in order to specify more clearly the intent
+
 // /**
 //  * file system path
 //  */

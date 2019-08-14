@@ -29,6 +29,7 @@ export function isFile(path: string): boolean {
 export function subDirectories(path: string): string[] {
     const all = fs.readdirSync(path);
     const directories = all.filter((sub) => isDirectory(nodePath.join(path, sub)));
+    // paths sorted to enforce determinism
     return directories.sort();
 }
 
