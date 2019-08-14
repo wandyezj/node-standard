@@ -6,13 +6,17 @@
 
 ## publish
 
-> npm login
+1. > npm login
 
-> npm publish -access=public
+1. > npm publish -access=public
 
-* `-access=public` is requires to publish the package under the scope 
+    * `-access=public` is requires to publish the package under the scope
 
-> npm logout
+1. > npm logout
+
+1. > git tag `version`
+    * `version` the version of the package
+1. > git push
 
 ## unpublish
 
