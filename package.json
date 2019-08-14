@@ -1,5 +1,5 @@
 {
-  "name": "@wandyezj/node-standard",
+  "name": "@wandyezj/standard-node",
   "version": "0.0.0",
   "description": "Standard node operations in nice wrappers.",
   "main": "dist/index.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wandyezj/node-standard.git"
+    "url": "https://github.com/wandyezj/standard-node.git"
   },
   "author": "wandyezj",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/wandyezj/node-standard/issues"
+    "url": "https://github.com/wandyezj/standard-node/issues"
   },
-  "homepage": "https://github.com/wandyezj/node-standard#readme",
+  "homepage": "https://github.com/wandyezj/standard-node#readme",
   "dependencies": {
     "@types/node": "^12.7.1"
   },
