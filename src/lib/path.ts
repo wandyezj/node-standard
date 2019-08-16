@@ -17,3 +17,11 @@ export function isDirectory(path: string): boolean {
 export function isFile(path: string): boolean {
     return fs.lstatSync(path).isFile();
 }
+
+/**
+ * does the path exist?
+ * @param path 
+ */
+export function exists(path: string): boolean {
+    return fs.existsSync(path);
+}

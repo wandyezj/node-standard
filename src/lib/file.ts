@@ -3,6 +3,7 @@
 import * as fs from 'fs';
 import * as standardString from "./string";
 import * as standardList from "./list";
+import * as standardPath from "./path";
 
 /**
  * Read utf-8 file and transform to standard new lines.
@@ -89,9 +90,19 @@ export function writeList(path: string, list: readonly string[]): void {
  * Removes all duplicates from the list before writing it.
  *
  * @param path path to write the list file to
- * @param data list of paths to weite
+ * @param data list of paths to write
  */
 export function writeListUnique(path: string, list: readonly string[]): void {
     const unique: string[] = standardList.removeDuplicates(list);
     writeList(path, unique);
+}
+
+/**
+ * does a file exist at the path?
+ * note: returns false if the path exists but it is not a file
+ * @param path 
+ * @returns true when the path is a file
+ */
+export function exists(path: string): boolean {
+    return fs.existsSync(path) && standardPath.isFile(path);
 }

@@ -24,3 +24,7 @@ Node Types and TypeScript are the only dependencies.
 * path
 * string
 * list
+
+## Philosophy
+
+An action should complete fully or throw an error.
