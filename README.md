@@ -27,4 +27,18 @@ Node Types and TypeScript are the only dependencies.
 
 ## Philosophy
 
-An action should complete fully or throw an error.
+### deterministic
+
+Every run of the program with the same inputs should produce the same result.
+
+In some cases external dependencies may have some variation (for example order of files in a directory), care should be taken to sanitize the input where possible so that it appears deterministic.
+
+determinism makes testing and reproducing issues substantially easier.
+
+### complete
+
+An action should never be in a partial state.
+
+The action should complete fully or throw an error.
+
+An error indicates that the action could not complete and the program may now be in an unknown state.
