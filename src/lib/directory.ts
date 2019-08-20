@@ -10,11 +10,17 @@ import * as standard from '../index';
  * @param path path of the directory to get the sub directories of
  * @returns directory names
  */
-export function subDirectories(path: string): string[] {
+export function directories(path: string): string[] {
     const all = fs.readdirSync(path);
     const directories = all.filter((sub: string) => standardPath.isDirectory(nodePath.join(path, sub)));
     // paths sorted to enforce determinism
     return directories.sort();
+}
+
+export function directoryPaths(path: string): string[] {
+    const names = directories(path);
+    const paths = names.map((name: string) => nodePath.join(path, name));
+    return paths;
 }
 
 /**
@@ -35,9 +41,9 @@ export function files(path: string): string[] {
  * @returns list of all paths to files in the directory
  */
 export function filePaths(path: string): string[] {
-    const fileNames = files(path);
-    const filePaths = fileNames.map((name: string) => nodePath.join(path, name));
-    return filePaths;
+    const names = files(path);
+    const paths = names.map((name: string) => nodePath.join(path, name));
+    return paths;
 }
 
 /**
@@ -55,7 +61,7 @@ export function exists(path: string): boolean {
  * @param path
  * @throws if the path is not a directory or was not created
  */
-export function ensureExists(path: string): void {
+export function create(path: string): void {
     if (standard.directory.exists(path)) {
         // is a directory
         return;
@@ -77,11 +83,20 @@ export function ensureExists(path: string): void {
  * recursively removes all files and subdirectories as well as the root directory
  * @param path 
  */
-export function ensureRemoved(path: string): void {
+export function remove(path: string): void {
+
+    // need to recursively delete items in the directory
 
     // can only delete an empty directory
-    fs.rmdirSync(path)
-    // need to recursively delete items in the directory
+
+    const options: RecurseOptions = {
+        onFile: (path: string) => {standard.file.remove(path);},
+        onAfterDirectories: (path: string) => {fs.rmdirSync(path);}
+    }
+
+    recurse(path, options);
+
+
 }
 
 /**
@@ -90,8 +105,8 @@ export function ensureRemoved(path: string): void {
  * @param path 
  */
 export function clear(path: string): void {
-    standard.directory.ensureRemoved(path);
-    standard.directory.ensureExists(path);
+    standard.directory.remove(path);
+    standard.directory.create(path);
 }
 
 export interface RecurseOptions {
@@ -107,6 +122,11 @@ export interface RecurseOptions {
     onDirectory?: (path: string) => void;
     
     /**
+     * callback after all files and all sub directories are read, takes the path of the fully read directory
+     */
+    onAfterDirectories?: (path: string) => void;
+
+    /**
      * if the recursion should exit early
      */
     //stop?: (path: string) => boolean;
@@ -114,6 +134,7 @@ export interface RecurseOptions {
 
 /**
  * calls functions over files and directories
+ * calls the onDirectory function for the directory, then it's files, then all subdirectories and so on
  * goes through files then directories in alphabetical order
  * @param path directory to start in
  * @param options 
@@ -124,12 +145,23 @@ export function recurse(path: string, options: RecurseOptions): void {
         throw `invalid directory: ${path}`
     }
 
-    if (options.onFile) {
-        // go through all files
-
+    const onDirectory = options.onDirectory;
+    if (onDirectory !== undefined) {
+        onDirectory(path);
     }
 
-    // go through all directories
+    const onFile = options.onFile;
+    if (onFile !== undefined) {
+        // go through all files
+        standard.directory.filePaths(path).forEach((filePath) => onFile(filePath));
+    }
 
+    // recurse through all directories
+    standard.directory.directoryPaths(path).forEach((directory) => recurse(directory, options));
+
+    const onAfterDirectories = options.onAfterDirectories;
+    if (onAfterDirectories !== undefined) {
+        onAfterDirectories(path);
+    }
 
 }

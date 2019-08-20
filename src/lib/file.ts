@@ -106,3 +106,7 @@ export function writeListUnique(path: string, list: readonly string[]): void {
 export function exists(path: string): boolean {
     return fs.existsSync(path) && standardPath.isFile(path);
 }
+
+export function remove(path: string): void {
+    fs.unlinkSync(path);
+}

@@ -3,5 +3,14 @@
         "Unlicense",
         "recurse",
         "wandyezj"
+    ],
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "typescript"
     ]
 }

@@ -1,7 +1,10 @@
 // standard set of functions for doing basic things.
 
-export { default as list } from "./lib/list";
-export { default as string } from "./lib/string";
-export { default as path } from "./lib/path";
-export { default as file } from "./lib/file";
-export { default as directory } from "./lib/directory";
+import * as list from "./lib/list";
+import * as string  from "./lib/string";
+import * as path  from "./lib/path";
+import * as  file from "./lib/file";
+import * as directory  from "./lib/directory";
+
+export {list, string, path, file, directory};
+
