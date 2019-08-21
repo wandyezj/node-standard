@@ -39,3 +39,7 @@ export function capitalize(string: string): string {
     }
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export function escapeRegularExpression(s: string) {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
