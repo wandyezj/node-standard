@@ -1,4 +1,5 @@
 // file manipulation
+// designed to work exclusively with text based files
 
 import * as fs from 'fs';
 import * as standardString from "./string";
@@ -110,3 +111,28 @@ export function exists(path: string): boolean {
 export function remove(path: string): void {
     fs.unlinkSync(path);
 }
+
+/**
+ * 
+ * @param pathA 
+ * @param pathB 
+ */
+export function equivalent(pathA: string, pathB: string): boolean {
+    if (fs.lstatSync(pathA).size !== fs.lstatSync(pathB).size) {
+        return false;
+    }
+
+    // compare file contents
+    const dataA = read(pathA);
+    const dataB = read(pathB);
+
+    // if (dataA !== dataB) {
+    //     console.log(dataA);
+    //     console.log();
+    //     console.log(dataB);
+    // }
+
+    return dataA === dataB;
+}
+
+

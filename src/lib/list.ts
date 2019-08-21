@@ -23,3 +23,19 @@ export function removeDuplicates<T>(list: readonly T[]): T[] {
         (value: T, index: number, array: readonly T[]) => array.indexOf(value) === index
     );
 }
+
+
+export function equivalent(a: string[], b: string[]): boolean {
+
+    if (a.length !== b.length) {
+        return false;
+    }
+
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] !== b[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}

@@ -85,6 +85,10 @@ export function create(path: string): void {
  */
 export function remove(path: string): void {
 
+    if (!exists(path)) {
+        // nothing needs to be done the path has already been removed
+        return;
+    }
     // need to recursively delete items in the directory
 
     // can only delete an empty directory
@@ -164,4 +168,122 @@ export function recurse(path: string, options: RecurseOptions): void {
         onAfterDirectories(path);
     }
 
+}
+
+/**
+ * gets subdirectory paths relative to the root
+ * @param rootPath 
+ * @returns all relative sub directory names
+ */
+function getAllSubDirectoriesRecursive(rootPath: string): string[] {
+
+    const directories: string[] = [];
+
+    const options: RecurseOptions = {
+        onDirectory: (directory: string) => {
+            directories.push(directory.slice(rootPath.length));
+        }
+    }
+
+    recurse(rootPath, options);
+
+    return directories;
+}
+
+/**
+ * Checks recursively that the contents of folderA are exactly equivalent to folderB
+ *
+ * Checks that all the same files exist and the file contents are the same.
+ *
+ * @param folderA folder to compare
+ * @param folderB folder to compare
+ * @returns true if folders contain the exact same subfolders and files and the files contents are the same.
+ */
+export function equivalent(pathA: string, pathB: string): boolean {
+
+    if (!fs.existsSync(pathA)) {
+        throw `Comparison folder does not exist: ${pathA}`;
+    }
+
+    if (!fs.existsSync(pathB)) {
+        throw `Comparison folder does not exist: ${pathB}`;
+    }
+
+    const subdirectoriesA = getAllSubDirectoriesRecursive(pathA);
+    const subdirectoriesB = getAllSubDirectoriesRecursive(pathB);
+
+    if (!standard.list.equivalent(subdirectoriesA, subdirectoriesB)) {
+        // Different subdirectories are present
+
+        console.log("Different subdirectories are present");
+        console.log(subdirectoriesA);
+        console.log(subdirectoriesB);
+        return false;
+    }
+
+    // Check that root folders have equivalent files
+    if (!directoryFilesEqual(pathA, pathB)) {
+        console.log("root directory files not equal");
+        return false;
+    }
+
+    // Check that all the subfolders have equivalent files
+    for (let i = 0; i < subdirectoriesA.length; i++) {
+        const subA = subdirectoriesA[i];
+        const subB = subdirectoriesB[i];
+
+        const directoryA = nodePath.join(pathA, subA);
+        const directoryB = nodePath.join(pathB, subB);
+
+        if (!directoryFilesEqual(directoryA, directoryB)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function directoryFilesEqual(folderA: string, folderB: string): boolean {
+    const filesA = files(folderA);
+    const filesB = files(folderB);
+
+    if (!fileListsEqual(folderA, filesA, folderB, filesB)) {
+        console.log("File lists not equal");
+        console.log(folderA);
+        console.log(folderB);
+        return false;
+    }
+
+    return true;
+}
+
+
+
+function fileListsEqual(rootA: string, a: string[], rootB: string, b: string[]): boolean {
+    if (!standard.list.equivalent(a, b)) {
+        // Different subdirectories are present
+
+        console.log("Different files are present");
+        console.log(a);
+        console.log(b);
+        return false;
+    }
+
+    // Check that the files are actually equal
+    for (let i = 0; i < a.length; i++) {
+        const nameA = a[i];
+        const fileA = nodePath.join(rootA, nameA);
+
+        const nameB = b[i];
+        const fileB = nodePath.join(rootB, nameB);
+
+        if (!standard.file.equivalent(fileA, fileB)) {
+            console.log("Files are not equal");
+            console.log(fileA);
+            console.log(fileB);
+            return false;
+        }
+    }
+
+    return true;
 }
