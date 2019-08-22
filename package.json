@@ -8,7 +8,8 @@
     "dist/*"
   ],
   "scripts": {
-    "test": "cd test && ts-node ./test.ts",
+    "test": "jest",
+    "manual": "cd test && ts-node ./manual.ts",
     "clean": "if exist dist (rmdir /s /q dist)",
     "build": "./node_modules/.bin/tsc"
   },
@@ -26,6 +27,9 @@
     "@types/node": "10.14.15"
   },
   "devDependencies": {
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "jest": "^24.9.0",
+    "@types/jest": "^24.0.18",
+    "ts-jest": "^24.0.2"
   }
 }

@@ -1,7 +1,7 @@
 // list manipulation
 
 /**
- * Remove all strings that are whitespace from the list.
+ * trims all strings and removes all strings that are pure whitespace from the list.
  * @param list list of strings.
  */
 export function removeEmpty(list: readonly string[]): string[] {
@@ -39,3 +39,5 @@ export function equivalent(a: string[], b: string[]): boolean {
 
     return true;
 }
+
+// visualize whitespace . = ' ' , ---- = '\t'

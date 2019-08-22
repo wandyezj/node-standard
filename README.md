@@ -46,3 +46,9 @@ Ideally actions would be part of a transaction where all actions would succeed o
 An error indicates that the action could not complete and the program may now be in an unknown state.
 
 In some cases complete is not possible due to the way that dependency APIs such as the file system are structured.
+
+### intuitive
+
+Short descriptive memorable names are preferred over longer names.
+
+The same words should be used for the same action, patterns should be applicable as far as possible.

@@ -37,3 +37,13 @@
 > npm deprecate @wandyezj/standard-node@"< `0.0.2`" "please update to the latest version" --otp=`one time pass`
 
 * deprecate older versions upon every publish
+
+## infrastructure
+
+[Jest Testing Framework](https://jestjs.io/)
+
+TypeScript
+
+Node
+
+Azure Pipelines

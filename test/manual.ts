@@ -1,4 +1,4 @@
-import * as standard from "../src/index";
+import * as standard from "./index"
 import * as path from 'path';
 // standard
 
