@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as fs from "fs";
 
 /**
  * is the path a directory?
@@ -20,7 +20,7 @@ export function isFile(path: string): boolean {
 
 /**
  * does the path exist?
- * @param path 
+ * @param path
  */
 export function exists(path: string): boolean {
     return fs.existsSync(path);

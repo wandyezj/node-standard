@@ -1,9 +1,9 @@
 // directory manipulation
 
-import * as fs from 'fs';
-import * as nodePath from 'path';
-import * as standardPath from './path'
-import * as standard from '../index';
+import * as fs from "fs";
+import * as nodePath from "path";
+import * as standardPath from "./path";
+import * as standard from "../index";
 
 /**
  * get subdirectory names that exist in the provided directory path
@@ -12,7 +12,9 @@ import * as standard from '../index';
  */
 export function directories(path: string): string[] {
     const all = fs.readdirSync(path);
-    const directories = all.filter((sub: string) => standardPath.isDirectory(nodePath.join(path, sub)));
+    const directories = all.filter((sub: string) =>
+        standardPath.isDirectory(nodePath.join(path, sub))
+    );
     // paths sorted to enforce determinism
     return directories.sort();
 }
@@ -30,7 +32,9 @@ export function directoryPaths(path: string): string[] {
  */
 export function files(path: string): string[] {
     const all = fs.readdirSync(path);
-    const files = all.filter((file: string) => standardPath.isFile(nodePath.join(path, file)));
+    const files = all.filter((file: string) =>
+        standardPath.isFile(nodePath.join(path, file))
+    );
     // paths are sorted because determinism is convenient for testing and reproduction of issues.
     return files.sort();
 }
@@ -49,7 +53,7 @@ export function filePaths(path: string): string[] {
 /**
  * does a file exist at the path?
  * note: returns false if a directory exists at the path
- * @param path 
+ * @param path
  * @returns true when the path is a directory
  */
 export function exists(path: string): boolean {
@@ -71,7 +75,7 @@ export function create(path: string): void {
         throw "path exists and is not a directory";
     }
 
-    fs.mkdirSync(path, {recursive: true});
+    fs.mkdirSync(path, { recursive: true });
 
     if (!standard.directory.exists(path)) {
         throw "directory could not be created";
@@ -81,10 +85,9 @@ export function create(path: string): void {
 /**
  * ensures that a directory only filled with files and directories is removed
  * recursively removes all files and subdirectories as well as the root directory
- * @param path 
+ * @param path
  */
 export function remove(path: string): void {
-
     if (!exists(path)) {
         // nothing needs to be done the path has already been removed
         return;
@@ -94,19 +97,21 @@ export function remove(path: string): void {
     // can only delete an empty directory
 
     const options: RecurseOptions = {
-        onFile: (path: string) => {standard.file.remove(path);},
-        onAfterDirectories: (path: string) => {fs.rmdirSync(path);}
-    }
+        onFile: (path: string) => {
+            standard.file.remove(path);
+        },
+        onAfterDirectories: (path: string) => {
+            fs.rmdirSync(path);
+        },
+    };
 
     recurse(path, options);
-
-
 }
 
 /**
  * delete the directory and recreate it to ensure it is free of items
  * note: can only handle directories that only contain files and directories
- * @param path 
+ * @param path
  */
 export function clear(path: string): void {
     standard.directory.remove(path);
@@ -114,17 +119,16 @@ export function clear(path: string): void {
 }
 
 export interface RecurseOptions {
-
     /**
      * callback for each file in the directory
      */
     onFile?: (path: string) => void;
 
     /**
-     * callback for each directory in the directory 
+     * callback for each directory in the directory
      */
     onDirectory?: (path: string) => void;
-    
+
     /**
      * callback after all files and all sub directories are read, takes the path of the fully read directory
      */
@@ -141,12 +145,11 @@ export interface RecurseOptions {
  * calls the onDirectory function for the directory, then it's files, then all subdirectories and so on
  * goes through files then directories in alphabetical order
  * @param path directory to start in
- * @param options 
+ * @param options
  */
 export function recurse(path: string, options: RecurseOptions): void {
-
     if (!standard.directory.exists(path)) {
-        throw `invalid directory: ${path}`
+        throw `invalid directory: ${path}`;
     }
 
     const onDirectory = options.onDirectory;
@@ -157,33 +160,35 @@ export function recurse(path: string, options: RecurseOptions): void {
     const onFile = options.onFile;
     if (onFile !== undefined) {
         // go through all files
-        standard.directory.filePaths(path).forEach((filePath) => onFile(filePath));
+        standard.directory
+            .filePaths(path)
+            .forEach((filePath) => onFile(filePath));
     }
 
     // recurse through all directories
-    standard.directory.directoryPaths(path).forEach((directory) => recurse(directory, options));
+    standard.directory
+        .directoryPaths(path)
+        .forEach((directory) => recurse(directory, options));
 
     const onAfterDirectories = options.onAfterDirectories;
     if (onAfterDirectories !== undefined) {
         onAfterDirectories(path);
     }
-
 }
 
 /**
  * gets subdirectory paths relative to the root
- * @param rootPath 
+ * @param rootPath
  * @returns all relative sub directory names
  */
 function getAllSubDirectoriesRecursive(rootPath: string): string[] {
-
     const directories: string[] = [];
 
     const options: RecurseOptions = {
         onDirectory: (directory: string) => {
             directories.push(directory.slice(rootPath.length));
-        }
-    }
+        },
+    };
 
     recurse(rootPath, options);
 
@@ -195,12 +200,11 @@ function getAllSubDirectoriesRecursive(rootPath: string): string[] {
  *
  * Checks that all the same files exist and the file contents are the same.
  *
- * @param folderA folder to compare
- * @param folderB folder to compare
+ * @param pathA folder to compare
+ * @param pathB folder to compare
  * @returns true if folders contain the exact same subfolders and files and the files contents are the same.
  */
 export function equivalent(pathA: string, pathB: string): boolean {
-
     if (!fs.existsSync(pathA)) {
         throw `Comparison folder does not exist: ${pathA}`;
     }
@@ -244,10 +248,10 @@ export function equivalent(pathA: string, pathB: string): boolean {
 }
 
 function directoryFilesEqual(folderA: string, folderB: string): boolean {
-    const filesA = files(folderA);
-    const filesB = files(folderB);
+    const filesA = filePaths(folderA);
+    const filesB = filePaths(folderB);
 
-    if (!fileListsEqual(folderA, filesA, folderB, filesB)) {
+    if (!fileListsEqual(filesA, filesB)) {
         console.log("File lists not equal");
         console.log(folderA);
         console.log(folderB);
@@ -257,9 +261,7 @@ function directoryFilesEqual(folderA: string, folderB: string): boolean {
     return true;
 }
 
-
-
-function fileListsEqual(rootA: string, a: string[], rootB: string, b: string[]): boolean {
+function fileListsEqual(a: string[], b: string[]): boolean {
     if (!standard.list.equivalent(a, b)) {
         // Different subdirectories are present
 
@@ -271,11 +273,8 @@ function fileListsEqual(rootA: string, a: string[], rootB: string, b: string[]):
 
     // Check that the files are actually equal
     for (let i = 0; i < a.length; i++) {
-        const nameA = a[i];
-        const fileA = nodePath.join(rootA, nameA);
-
-        const nameB = b[i];
-        const fileB = nodePath.join(rootB, nameB);
+        const fileA = a[i];
+        const fileB = b[i];
 
         if (!standard.file.equivalent(fileA, fileB)) {
             console.log("Files are not equal");

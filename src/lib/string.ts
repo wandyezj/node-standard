@@ -41,5 +41,5 @@ export function capitalize(string: string): string {
 }
 
 export function escapeRegularExpression(s: string) {
-    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+    return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 }

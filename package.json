@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest",
     "prettier-check": "./node_modules/.bin/prettier --check src/**/*.ts",
-    "prettier": "./node_modules/.bin/prettier --config .prettierrc",
+    "prettier": "./node_modules/.bin/prettier --config .prettierrc --write src/**/*.ts",
     "manual": "cd test && ts-node ./manual.ts",
     "clean": "if exist dist (rmdir /s /q dist)",
     "build": "./node_modules/.bin/tsc"

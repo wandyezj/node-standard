@@ -1,7 +1,7 @@
 // file manipulation
 // designed to work exclusively with text based files
 
-import * as fs from 'fs';
+import * as fs from "fs";
 import * as standardString from "./string";
 import * as standardList from "./list";
 import * as standardPath from "./path";
@@ -60,8 +60,8 @@ export function readJson<T>(path: string): T {
 
 /**
  * Transform a data object to a string and write it to the specified path.
- * @param path 
- * @param object 
+ * @param path
+ * @param object
  */
 export function writeJson(path: string, object: object): void {
     const json: string = JSON.stringify(object, undefined, 2);
@@ -70,7 +70,7 @@ export function writeJson(path: string, object: object): void {
 
 /**
  * reads lines from a file and removes the ones that are whitespace.
- * @param path 
+ * @param path
  */
 export function readList(path: string): string[] {
     const data: string = read(path);
@@ -79,8 +79,8 @@ export function readList(path: string): string[] {
 
 /**
  * write a list to a file
- * @param path 
- * @param data 
+ * @param path
+ * @param data
  */
 export function writeList(path: string, list: readonly string[]): void {
     const joined: string = list.join("\n");
@@ -101,7 +101,7 @@ export function writeListUnique(path: string, list: readonly string[]): void {
 /**
  * does a file exist at the path?
  * note: returns false if the path exists but it is not a file
- * @param path 
+ * @param path
  * @returns true when the path is a file
  */
 export function exists(path: string): boolean {
@@ -113,9 +113,9 @@ export function remove(path: string): void {
 }
 
 /**
- * 
- * @param pathA 
- * @param pathB 
+ *
+ * @param pathA
+ * @param pathB
  */
 export function equivalent(pathA: string, pathB: string): boolean {
     if (fs.lstatSync(pathA).size !== fs.lstatSync(pathB).size) {
@@ -134,5 +134,3 @@ export function equivalent(pathA: string, pathB: string): boolean {
 
     return dataA === dataB;
 }
-
-

@@ -5,28 +5,24 @@
  * @param list list of strings.
  */
 export function removeEmpty(list: readonly string[]): string[] {
-    return list.map(
-        (x) => x.trim()
-    ).filter(
-        (x) => x !== ""
-    );
+    const whitespaceRemoved = list.map((x) => x.trim());
+    const emptyRemoved = whitespaceRemoved.filter((x) => x !== "");
+    return emptyRemoved;
 }
 
 /**
  * removes duplicates from the list, comparing using th default comparison operator, keeping only the first occurrence.
- * @param list 
+ * @param list
  */
 export function removeDuplicates<T>(list: readonly T[]): T[] {
-
     // only take the first item
     return list.filter(
-        (value: T, index: number, array: readonly T[]) => array.indexOf(value) === index
+        (value: T, index: number, array: readonly T[]) =>
+            array.indexOf(value) === index
     );
 }
 
-
 export function equivalent(a: string[], b: string[]): boolean {
-
     if (a.length !== b.length) {
         return false;
     }
@@ -40,4 +36,4 @@ export function equivalent(a: string[], b: string[]): boolean {
     return true;
 }
 
-// visualize whitespace . = ' ' , ---- = '\t'
+// visualize whitespace or indents . = ' ' , ---- = '\t'
