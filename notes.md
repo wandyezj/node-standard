@@ -44,6 +44,9 @@
 
 TypeScript
 
+Prettier
+[Prettier Schema File](http://json.schemastore.org/prettierrc)
+
 Node
 
 Azure Pipelines
