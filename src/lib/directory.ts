@@ -160,9 +160,7 @@ export function recurse(path: string, options: RecurseOptions): void {
     const onFile = options.onFile;
     if (onFile !== undefined) {
         // go through all files
-        standard.directory
-            .files(path)
-            .forEach((filePath) => onFile(filePath));
+        standard.directory.files(path).forEach((filePath) => onFile(filePath));
     }
 
     // recurse through all directories
@@ -252,7 +250,6 @@ function directoryFilesEqual(folderA: string, folderB: string): boolean {
     const fileNamesB = fileNames(folderB);
 
     if (!standard.list.equivalent(fileNamesA, fileNamesB)) {
-
         // console.log("Different files are present");
         // console.log(a);
         // console.log(b);
@@ -274,7 +271,6 @@ function directoryFilesEqual(folderA: string, folderB: string): boolean {
 }
 
 function fileListsEqual(a: string[], b: string[]): boolean {
-
     // Check that the files are actually equal
     for (let i = 0; i < a.length; i++) {
         const fileA = a[i];
