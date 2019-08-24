@@ -1,5 +1,7 @@
 // string manipulation
 
+import * as standard from "../index";
+
 /**
  * standardize newlines to proper unix line endings
  * @param string to standardize
@@ -25,6 +27,44 @@ export function lineSplit(string: string): string[] {
 export function insertTabs(string: string, count: number = 1): string {
     const tabs = "\t".repeat(count);
     return `${tabs}${string.replace(/\n/g, `\n${tabs}`)}`;
+}
+
+/**
+ * describe a single level of indent
+ */
+interface Indent {
+    /**
+     * the value to use for the indent
+     * default of four spaces
+     */
+    value?: string;
+
+    /**
+     * the number of the value to use for a single level of indent
+     * default of 1
+     */
+    count?: number;
+
+    /**
+     * the number of times to indent
+     * default of 1
+     */
+    level?: number;
+}
+
+const defaultIndent: Indent = {
+    value: " ",
+    count: 4,
+    level: 1,
+};
+
+
+export function indent(string: string, indent: Indent = defaultIndent): string {
+
+    indent = standard.object.mergeWithDefaults(indent, defaultIndent);
+
+    const indentString = indent.value.repeat(indent.count).repeat(indent.level);
+    lineSplit(string).join("\n")
 }
 
 /**

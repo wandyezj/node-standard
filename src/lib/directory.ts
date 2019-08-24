@@ -2,7 +2,6 @@
 
 import * as fs from "fs";
 import * as nodePath from "path";
-import * as standardPath from "./path";
 import * as standard from "../index";
 
 /**
@@ -13,7 +12,7 @@ import * as standard from "../index";
 export function directoryNames(path: string): string[] {
     const all = fs.readdirSync(path);
     const directories = all.filter((sub: string) =>
-        standardPath.isDirectory(nodePath.join(path, sub))
+        standard.path.isDirectory(nodePath.join(path, sub))
     );
     // paths sorted to enforce determinism
     return directories.sort();
@@ -33,7 +32,7 @@ export function directories(path: string): string[] {
 export function fileNames(path: string): string[] {
     const all = fs.readdirSync(path);
     const files = all.filter((file: string) =>
-        standardPath.isFile(nodePath.join(path, file))
+        standard.path.isFile(nodePath.join(path, file))
     );
     // paths are sorted because determinism is convenient for testing and reproduction of issues.
     return files.sort();
@@ -57,7 +56,7 @@ export function files(path: string): string[] {
  * @returns true when the path is a directory
  */
 export function exists(path: string): boolean {
-    return fs.existsSync(path) && standardPath.isDirectory(path);
+    return fs.existsSync(path) && standard.path.isDirectory(path);
 }
 
 /**
