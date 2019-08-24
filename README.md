@@ -24,6 +24,8 @@ Node Types and TypeScript are the only dependencies.
 * path
 * string
 * list
+* directory - full directory path
+* file - full file path
 
 ## Philosophy
 

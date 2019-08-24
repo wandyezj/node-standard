@@ -10,7 +10,7 @@ import * as standard from "../index";
  * @param path path of the directory to get the sub directories of
  * @returns directory names
  */
-export function directories(path: string): string[] {
+export function directoryNames(path: string): string[] {
     const all = fs.readdirSync(path);
     const directories = all.filter((sub: string) =>
         standardPath.isDirectory(nodePath.join(path, sub))
@@ -19,8 +19,8 @@ export function directories(path: string): string[] {
     return directories.sort();
 }
 
-export function directoryPaths(path: string): string[] {
-    const names = directories(path);
+export function directories(path: string): string[] {
+    const names = directoryNames(path);
     const paths = names.map((name: string) => nodePath.join(path, name));
     return paths;
 }
@@ -30,7 +30,7 @@ export function directoryPaths(path: string): string[] {
  * @param path path of the directory to get the files in
  * @returns list of file names in the directory
  */
-export function files(path: string): string[] {
+export function fileNames(path: string): string[] {
     const all = fs.readdirSync(path);
     const files = all.filter((file: string) =>
         standardPath.isFile(nodePath.join(path, file))
@@ -44,8 +44,8 @@ export function files(path: string): string[] {
  * @param path path of directory
  * @returns list of all paths to files in the directory
  */
-export function filePaths(path: string): string[] {
-    const names = files(path);
+export function files(path: string): string[] {
+    const names = fileNames(path);
     const paths = names.map((name: string) => nodePath.join(path, name));
     return paths;
 }
@@ -161,13 +161,13 @@ export function recurse(path: string, options: RecurseOptions): void {
     if (onFile !== undefined) {
         // go through all files
         standard.directory
-            .filePaths(path)
+            .files(path)
             .forEach((filePath) => onFile(filePath));
     }
 
     // recurse through all directories
     standard.directory
-        .directoryPaths(path)
+        .directories(path)
         .forEach((directory) => recurse(directory, options));
 
     const onAfterDirectories = options.onAfterDirectories;
@@ -220,8 +220,8 @@ export function equivalent(pathA: string, pathB: string): boolean {
         // Different subdirectories are present
 
         console.log("Different subdirectories are present");
-        console.log(subdirectoriesA);
-        console.log(subdirectoriesB);
+        // console.log(subdirectoriesA);
+        // console.log(subdirectoriesB);
         return false;
     }
 
@@ -248,8 +248,20 @@ export function equivalent(pathA: string, pathB: string): boolean {
 }
 
 function directoryFilesEqual(folderA: string, folderB: string): boolean {
-    const filesA = filePaths(folderA);
-    const filesB = filePaths(folderB);
+    const fileNamesA = fileNames(folderA);
+    const fileNamesB = fileNames(folderB);
+
+    if (!standard.list.equivalent(fileNamesA, fileNamesB)) {
+
+        // console.log("Different files are present");
+        // console.log(a);
+        // console.log(b);
+        return false;
+    }
+
+    // check that file contents are equivalent
+    const filesA = files(folderA);
+    const filesB = files(folderB);
 
     if (!fileListsEqual(filesA, filesB)) {
         console.log("File lists not equal");
@@ -262,14 +274,6 @@ function directoryFilesEqual(folderA: string, folderB: string): boolean {
 }
 
 function fileListsEqual(a: string[], b: string[]): boolean {
-    if (!standard.list.equivalent(a, b)) {
-        // Different subdirectories are present
-
-        console.log("Different files are present");
-        console.log(a);
-        console.log(b);
-        return false;
-    }
 
     // Check that the files are actually equal
     for (let i = 0; i < a.length; i++) {
@@ -277,9 +281,9 @@ function fileListsEqual(a: string[], b: string[]): boolean {
         const fileB = b[i];
 
         if (!standard.file.equivalent(fileA, fileB)) {
-            console.log("Files are not equal");
-            console.log(fileA);
-            console.log(fileB);
+            // console.log("Files are not equal");
+            // console.log(fileA);
+            // console.log(fileB);
             return false;
         }
     }

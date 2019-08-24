@@ -26,6 +26,7 @@ const file = path.join(subdirectory, "file.txt");
 standard.file.write(file, "test");
 
 
+console.log("recurse");
 const options: standard.directory.RecurseOptions = {
     onFile: (file: string) => {console.log(file)},
     onDirectory: (directory: string) => {console.log(directory)}
