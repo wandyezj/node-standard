@@ -14,7 +14,7 @@ import * as standard from "../index";
  * convert markdown test to html
  * @param text 
  */
-export function mdToHtml(text: string) : string {
+export function mdToHtml(text: string): string {
 
     let output = "";
 
@@ -25,13 +25,15 @@ export function mdToHtml(text: string) : string {
 
 
 function createHtmlWithBody(body: string): string {
-
-    const indentedBody = standard.string.insertTabs(body, 2);
+    const indentedBody = standard.string.trimEndAllLines(
+        standard.string.indent(body, {
+            level: 3,
+        }));
 
     const formattedBody = `<!DOCTYPE html>
 <html>
     <body>
-        ${indentedBody}
+${indentedBody}
     </body>
 </html>`;
 

@@ -29,6 +29,8 @@ export function insertTabs(string: string, count: number = 1): string {
     return `${tabs}${string.replace(/\n/g, `\n${tabs}`)}`;
 }
 
+
+
 /**
  * describe a single level of indent
  */
@@ -37,19 +39,19 @@ interface Indent {
      * the value to use for the indent
      * default of four spaces
      */
-    value?: string;
+    value: string;
 
     /**
      * the number of the value to use for a single level of indent
      * default of 1
      */
-    count?: number;
+    count: number;
 
     /**
      * the number of times to indent
      * default of 1
      */
-    level?: number;
+    level: number;
 }
 
 const defaultIndent: Indent = {
@@ -58,13 +60,27 @@ const defaultIndent: Indent = {
     level: 1,
 };
 
+/**
+ * indent all lines with the specified level of indent.
+ * @param string 
+ * @param indent 
+ */
+export function indent(string: string, indent: Partial<Indent> = defaultIndent): string {
 
-export function indent(string: string, indent: Indent = defaultIndent): string {
+    const settings: Indent = standard.object.mergeWithDefaults(indent, defaultIndent);
 
-    indent = standard.object.mergeWithDefaults(indent, defaultIndent);
+    const indentString = settings.value.repeat(settings.count).repeat(settings.level);
 
-    const indentString = indent.value.repeat(indent.count).repeat(indent.level);
-    lineSplit(string).join("\n")
+    // this also indents any empty lines
+    return indentString + lineSplit(string).join(`\n${indentString}`);
+}
+
+/**
+ * remove whitespace from the end of all lines
+ * @param string 
+ */
+export function trimEndAllLines(string: string) {
+    return lineSplit(string).map((line) => line.trimEnd()).join("\n");
 }
 
 /**
@@ -82,4 +98,35 @@ export function capitalize(string: string): string {
 
 export function escapeRegularExpression(s: string) {
     return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+}
+
+
+interface WhitespaceVisualize {
+    space: string;
+    newline: string;
+    tab: string;
+}
+
+const defaultWhitespaceVisualize: WhitespaceVisualize = {
+    space: ".",
+    newline: "\n",
+    tab:"----"
+}
+
+export function visualizeWhitespaceIndent(string: string, vizualize: Partial<WhitespaceVisualize> = defaultWhitespaceVisualize): string {
+
+    const settings: WhitespaceVisualize = standard.object.mergeWithDefaults(vizualize, defaultWhitespaceVisualize);
+
+    const visualized = lineSplit(string).map((line) => {
+        const index = line.trimStart().length;
+        // starting whitespace
+        const whitespace = line.substring(0, index);
+        const contents = line.substring(index);
+
+        const updated = whitespace.replace(/ /g, settings.space).replace(/\n/g, settings.newline).replace(/\t/g, settings.tab);
+        return updated + contents;
+
+    }).join("\n");
+
+    return visualized;
 }

@@ -1,15 +1,23 @@
+export type AllDefined<T> = {
+    [P in keyof T]: T[P];
+}
 
+// type Partial<T> = {
+//     [K in keyof T]?: T[K];
+// }
 /**
  * create a new object that ensure all default properties are present
  * @param original 
  * @param defaults 
  */
-export function mergeWithDefaults<T extends any>(original: T, defaults: T): T {
+export function mergeWithDefaults<T extends object>(original: Partial<T>, defaults: T): T {
 
-    const merge: T = shallowCopyOwnProperties(original);
+    const o: any = original;
+    const d: any = defaults;
+    const merge: any = shallowCopyOwnProperties(original);
 
     Object.getOwnPropertyNames(defaults).forEach((name) => {
-        merge[name] = Object.hasOwnProperty(name) ? original[name] : defaults[name];
+        merge[name] = Object.hasOwnProperty(name) ? o[name] : d[name];
     });
 
     return merge;
