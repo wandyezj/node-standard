@@ -67,8 +67,7 @@ function testSvg() {
 
     const blackStyle = new svg.Style("black", circleStyleOptions);
 
-    const centerCircle = new svg.Circle(centerX, centerY, circleRadius, {comment:"", style: blackStyle});
-    s.addShape(centerCircle);
+    s.addCircle({comment:"Center Circle", centerX, centerY, radius:circleRadius, style: blackStyle});
 
     const image = s.toString();
     console.log(image);

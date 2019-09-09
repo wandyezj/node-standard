@@ -4,5 +4,6 @@
 <style type="text/css">
 .black{{fill:#0000ff}}
 </style>
+<!-- Center Circle -->
 <circle class="black" cx="50" cy="50" r="50" />
 </svg>

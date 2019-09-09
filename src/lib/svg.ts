@@ -41,6 +41,11 @@ export class Svg {
         this.shapes.push(shape);
     }
 
+    // Convenience
+    public addCircle(circle: CircleAttributes) {
+        this.shapes.push(new Circle(circle));
+    }
+
     // private getStyles(): Style[] {
     //     this.shapes.forEach()
 
@@ -156,17 +161,18 @@ class Comment implements toString {
     }
 }
 
-class Shape implements toString {
+abstract class Shape implements toString {
 
     public style?: Style = undefined;
     public comment?: string = undefined;
-    private attributes: Map<string, string> = new Map();
 
     constructor(public name: string, options: ShapeOptions = {}) {
         this.comment = options.comment;
         this.style = options.style;
     }
 
+    
+    private attributes: Map<string, string> = new Map();
     protected setAttributes(attributes: [string, string][]) {
         // set all attributes
 
@@ -189,19 +195,66 @@ class Shape implements toString {
     }
 }
 
+// Actual Shapes are thin wrappers around the shape class
 
-export class Circle extends Shape {
+export interface CircleAttributes extends ShapeOptions{
+    centerX: number;
+    centerY: number;
+    radius: number;
+}
 
-    constructor(public centerX: number, public centerY: number, public radius: number, options?: ShapeOptions) {
-        super("circle", options);
-    }
+export class Circle extends Shape implements CircleAttributes {
+    public centerX: number;
+    public centerY: number;
+    public radius: number;
 
-    public setAttributes() {
-        super.setAttributes([["cx", this.centerX.toString()], ["cy", this.centerY.toString()], ["r", this.radius.toString()]]);
+    constructor(attributes: CircleAttributes) {
+        super("circle", attributes);
+        this.centerX = attributes.centerX;
+        this.centerY = attributes.centerY;
+        this.radius = attributes.radius;
     }
 
     public toString(): string {
-        this.setAttributes();
+        super.setAttributes([
+            ["cx", this.centerX.toString()],
+            ["cy", this.centerY.toString()],
+            ["r", this.radius.toString()]
+        ]);
+        return super.toString();
+    }
+}
+
+
+export interface LineAttributes extends ShapeOptions{
+    beginX: number;
+    beginY: string;
+    endX: number;
+    endY: string;
+}
+
+export class Line extends Shape {
+
+    public beginX: number;
+    public beginY: string;
+    public endX: number;
+    public endY: string;
+
+    constructor(attributes: LineAttributes) {
+        super("line", attributes);
+        this.beginX = attributes.beginX;
+        this.beginY = attributes.beginY;
+        this.endX = attributes.endX;
+        this.endY = attributes.endY;
+    }
+
+    public toString(): string {
+        super.setAttributes([
+            ["x1", this.beginX.toString()],
+            ["y1", this.beginY.toString()], 
+            ["x2", this.endX.toString()],
+            ["y2", this.endY.toString()]
+        ]);
         return super.toString();
     }
 }
