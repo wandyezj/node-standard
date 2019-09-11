@@ -46,6 +46,10 @@ export class Svg {
         this.shapes.push(new Circle(circle));
     }
 
+    public addLine(line: LineAttributes) {
+        this.shapes.push(new Line(line));
+    }
+
     // private getStyles(): Style[] {
     //     this.shapes.forEach()
 
@@ -119,20 +123,68 @@ interface toString {
     toString(): string;
 }
 
-export interface StyleOptions {
-    fill?: string;
-    stroke?: string;
+// TODO: check for color
+// should stroke and fill be renamed fillColor and strokeColor?
+
+export enum StrokeLineJoin {
+    Miter = "miter",
+    Round = "round",
+    Bevel = "bevel",
+    MiterClip = "miter-clip",
+    Arcs = "arcs",
 }
 
-export class Style implements toString {
+export interface StyleOptions {
+    fill?: string;
+    
+    /**
+     * used for lines 
+     */
+    stroke?: string;
 
-    constructor(public name: string, public options: StyleOptions) {
+    /**
+     * width of the stroke
+     */
+    strokeWidth?: number;
+
+    /**
+     * How ends of lines should be handled
+     * https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin
+     */
+    strokeLineJoin?: StrokeLineJoin;
+}
+
+
+
+export interface StyleAttributes extends StyleOptions {
+    name: string;
+}
+
+export class Style implements toString, StyleAttributes {
+
+
+    public name: string;
+    public fill?: string;
+    public stroke?: string;
+    public strokeWidth?: number;
+    public strokeLineJoin?: StrokeLineJoin;
+
+    constructor(attributes: StyleAttributes) {
         // name must be continuous
+        this.name = attributes.name;
+        this.fill = attributes.fill;
+        this.stroke = attributes.stroke
+        this.strokeWidth = attributes.strokeWidth;
+        this.strokeLineJoin = attributes.strokeLineJoin;
     }
 
     private getAttributes(): string{
-        const o = this.options;
-        const attributes: [string, string | undefined][] = [["fill", o.fill], ["stroke", o.stroke]];
+        const attributes: [string, string | undefined][] = [
+            ["fill", this.fill],
+            ["stroke", this.stroke],
+            ["stroke-width", this.strokeWidth? this.strokeWidth.toString() : undefined],
+            ["stroke-linejoin", this.strokeLineJoin]
+        ];
 
         return attributes.map((attribute: [string, string| undefined]) => {
             const name = attribute[0];
@@ -143,7 +195,7 @@ export class Style implements toString {
     }
 
     public toString() {
-        return `.${this.name}{{${this.getAttributes()}}}`;
+        return `.${this.name}{${this.getAttributes()}}`;
     }
 }
 
@@ -228,17 +280,17 @@ export class Circle extends Shape implements CircleAttributes {
 
 export interface LineAttributes extends ShapeOptions{
     beginX: number;
-    beginY: string;
+    beginY: number;
     endX: number;
-    endY: string;
+    endY: number;
 }
 
 export class Line extends Shape {
 
     public beginX: number;
-    public beginY: string;
+    public beginY: number;
     public endX: number;
-    public endY: string;
+    public endY: number;
 
     constructor(attributes: LineAttributes) {
         super("line", attributes);
