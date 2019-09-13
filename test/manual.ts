@@ -1,6 +1,7 @@
 import * as standard from "./index"
 import * as path from 'path';
 import * as svg from '../src/lib/svg';
+import * as markdown from "../src/lib/markdown";
 // standard
 
 //
@@ -187,6 +188,23 @@ function testSvg() {
 }
 
 testSvg();
+
+function testMarkdown() {
+
+    console.log(`
+
+markdown
+`);
+
+    const document = new markdown.Document();
+
+    document.addHeading({title: "heading", level:1});
+    document.addParagraph().addText({text:"paragraph test"});
+
+    console.log(document.toString());
+}
+
+testMarkdown();
 
 
 
