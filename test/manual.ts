@@ -1,6 +1,6 @@
 import * as standard from "./index"
 import * as path from 'path';
-import * as svg from '../src/lib/svg';
+import * as svg from '../src/lib/svg/index';
 import * as markdown from "../src/lib/markdown";
 // standard
 
@@ -102,11 +102,13 @@ function createVenusSvg() {
     const background = new svg.Style({name:"background", fill:"#ffe1ff"});
     const blackOutline = new svg.Style({name:"blackOutline", fill:"none", stroke: "#000000", strokeWidth});
     const blackLine = new svg.Style({name:"blackLine", stroke: "#000000", strokeWidth});
+    const redLine = new svg.Style({name:"redLine", stroke: "#ff0000", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Bevel});
 
     s.addCircle({comment:"Background", centerX, centerY, radius: (squareSize / 2), style: background});
     s.addCircle({comment:"Center Circle", centerX, centerY, radius:circleRadius, style: blackOutline});
     
     const plusSquare = (circleRadius + strokeWidth) / 2.4;
+    const plusSquareLength = plusSquare * 2;
     const plusOffset = circleRadius + strokeWidth + (plusSquare / 2);
 
     const plusCenterX = centerX;
@@ -132,31 +134,96 @@ function createVenusSvg() {
         );
 
 
-    // // add markers
-    // const markLine = new svg.Style({name:"markLine", stroke: "#ff0f00", strokeWidth: 1});
-    // const dividers = 6
-    // for (let i = 0; i < dividers; i++) {
-    //     // horizontal
-    //     const divider = (squareSize / dividers) * i;
-    //     s.addLine({
-    //         comment:`divider horizontal ${i}`, 
-    //         beginX: 0, 
-    //         beginY: divider, 
-    //         endX: squareSize,
-    //         endY: divider,
-    //         style: markLine}
-    //         );
+    // add markers
+    const markLine = new svg.Style({name:"markLine", stroke: "#ff0f00", strokeWidth: 1});
+    const dividers = 6
+    for (let i = 0; i < dividers; i++) {
+        // horizontal
+        const divider = (squareSize / dividers) * i;
+        s.addLine({
+            comment:`divider horizontal ${i}`, 
+            beginX: 0, 
+            beginY: divider, 
+            endX: squareSize,
+            endY: divider,
+            style: markLine}
+            );
 
-    //     s.addLine({
-    //         comment:`divider vertical ${i}`, 
-    //         beginX: divider, 
-    //         beginY: 0, 
-    //         endX: divider,
-    //         endY: squareSize,
-    //         style: markLine}
-    //         );
+        s.addLine({
+            comment:`divider vertical ${i}`, 
+            beginX: divider, 
+            beginY: 0, 
+            endX: divider,
+            endY: squareSize,
+            style: markLine}
+            );
         
-    // }
+    }
+
+
+    // Add Arrow
+    const tipLength = plusSquare * 1.25;
+
+
+
+    const angle = Math.PI / 4;
+    const stemX = centerX + circleRadius * Math.sin(angle);
+    const stemY = centerY - circleRadius * Math.cos(angle);
+    const stemLength = plusSquareLength;
+    
+    const tipX = stemX + stemLength * Math.sin(angle);
+    const tipY = stemY - stemLength * Math.cos(angle);
+
+    const arrowStyle = blackLine;
+
+    s.addLine({
+        comment:`Stem`,
+        beginX: stemX,
+        beginY: stemY,
+        endX: tipX,
+        endY: tipY,
+        style: blackLine,
+    });
+
+
+    const tipLeftY = tipY + strokeWidth / 4;
+    s.addLine({
+        comment:`Tip Left`,
+        beginX: tipX,
+        beginY: tipLeftY,
+        endX: tipX - tipLength,
+        endY: tipLeftY,
+        style: arrowStyle,
+    });
+
+
+    const tipRightX = tipX - strokeWidth / 4;
+    s.addLine({
+        comment:`Tip Right`,
+        beginX: tipRightX,
+        beginY: tipY,
+        endX: tipRightX,
+        endY: tipY + tipLength,
+        style: arrowStyle,
+    });
+
+    const relativeTipX = stemLength * Math.sin(angle);
+    const relativeTipY =  -1 * stemLength * Math.cos(angle);
+    s.addPath({beginX:centerX, beginY: centerY, style: redLine})
+        .lineTo({
+            x: relativeTipX,
+            y: relativeTipY,
+            type: svg.PathCoordinateType.Relative
+        })
+        .lineTo({
+            x: -1 * tipLength,
+            y: 0,
+            type: svg.PathCoordinateType.Relative
+        }).lineTo({
+            x: tipLength,
+            y: 0,
+            type: svg.PathCoordinateType.Relative
+        });
 
 
     return s;

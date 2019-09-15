@@ -75,9 +75,7 @@ interface TextProperties {
     text: string;
 }
 
-class Text implements Element, TextProperties, AddText {
-
-    private elements: Element[] = [];
+class Text implements Element, TextProperties {
 
     public text: string;
 
