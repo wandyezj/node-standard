@@ -6,10 +6,10 @@ import { LineAttributes } from "./LineAttributes";
 import { Line } from "./Line";
 import { StrokeLineJoin } from "./StrokeLineJoin";
 import { Svg } from "./Svg"
-import { PathCoordinateType } from "./PathCoordinateType"
+import { CoordinateLocation } from "./PathCoordinate"
 import { Style } from "./Style";
 
 export {
      Svg, Circle, CircleAttributes, Shape, ShapeOptions, LineAttributes, Line, Style, StrokeLineJoin,
-     PathCoordinateType
+     CoordinateLocation
 }

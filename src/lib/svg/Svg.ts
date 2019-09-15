@@ -5,6 +5,7 @@ import { LineAttributes } from "./LineAttributes";
 import { Line } from "./Line";
 import { PathAttributes } from "./PathAttributes";
 import { Path } from "./Path";
+import { PenAttributes, PenPath, Pen } from "./Pen";
 
 
 export class Svg {
@@ -60,6 +61,12 @@ export class Svg {
 
     public addPath(path: PathAttributes) {
         const shape = new Path(path);
+        this.shapes.push(shape);
+        return shape;
+    }
+
+    public addPen(pen: PenAttributes): Pen {
+        const shape = new PenPath(pen);
         this.shapes.push(shape);
         return shape;
     }

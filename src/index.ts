@@ -8,5 +8,6 @@ import * as parameter from "./lib/parameter";
 import * as path from "./lib/path";
 import * as file from "./lib/file";
 import * as directory from "./lib/directory";
+import * as math from "./lib/math";
 
-export { list, string, object, parameter, number, path, file, directory };
+export { list, string, object, parameter, number, path, file, directory, math };

@@ -103,6 +103,9 @@ function createVenusSvg() {
     const blackOutline = new svg.Style({name:"blackOutline", fill:"none", stroke: "#000000", strokeWidth});
     const blackLine = new svg.Style({name:"blackLine", stroke: "#000000", strokeWidth});
     const redLine = new svg.Style({name:"redLine", stroke: "#ff0000", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Bevel});
+    const greenLine = new svg.Style({name:"greenLine", stroke: "#00ff00", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
+
+
 
     s.addCircle({comment:"Background", centerX, centerY, radius: (squareSize / 2), style: background});
     s.addCircle({comment:"Center Circle", centerX, centerY, radius:circleRadius, style: blackOutline});
@@ -213,17 +216,35 @@ function createVenusSvg() {
         .lineTo({
             x: relativeTipX,
             y: relativeTipY,
-            type: svg.PathCoordinateType.Relative
+            location: svg.CoordinateLocation.Relative
         })
         .lineTo({
             x: -1 * tipLength,
             y: 0,
-            type: svg.PathCoordinateType.Relative
+            location: svg.CoordinateLocation.Relative
         }).lineTo({
             x: tipLength,
             y: 0,
-            type: svg.PathCoordinateType.Relative
+            location: svg.CoordinateLocation.Relative
         });
+
+    s.addPen({style: greenLine})
+        .to(centerX, centerY)
+        .down()
+        .rotate(0)
+        .forward(stemLength)
+        .back()
+        .rotate(45)
+        .forward(stemLength)
+        .back()
+        .rotate(45)
+        .forward(stemLength)
+        .back()
+        //.to(centerX + relativeTipX, centerY + relativeTipY)
+
+        
+
+        ;
 
 
     return s;
