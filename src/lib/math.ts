@@ -1,4 +1,4 @@
 export function degreesToRadians(degrees: number): number {
     
-    return Math.PI * (degrees / 180);
+    return 2 * Math.PI * ((degrees % 360) / 360);
 }

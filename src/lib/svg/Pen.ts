@@ -82,7 +82,7 @@ export class PenPath extends Path implements Pen {
     private angleDegrees: number = 0;
 
     private get angleRadians(): number {
-        return standard.math.degreesToRadians(180 - this.angleDegrees % 360)
+        return standard.math.degreesToRadians(this.angleDegrees - 90 * 3);
     }
 
     constructor(attributes: PenAttributes) {
@@ -151,7 +151,7 @@ export class PenPath extends Path implements Pen {
 
         // relative rewind location
         // go in reverse
-        return this.move(0 - this.previous.x, 0 - this.previous.y);
+        return this.move(0 - this.current.x, 0 - this.current.y);
     }
 
     forward(length: number): Pen {

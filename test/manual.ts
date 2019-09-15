@@ -103,7 +103,6 @@ function createVenusSvg() {
     const blackOutline = new svg.Style({name:"blackOutline", fill:"none", stroke: "#000000", strokeWidth});
     const blackLine = new svg.Style({name:"blackLine", stroke: "#000000", strokeWidth});
     const redLine = new svg.Style({name:"redLine", stroke: "#ff0000", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Bevel});
-    const greenLine = new svg.Style({name:"greenLine", stroke: "#00ff00", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
 
 
 
@@ -228,6 +227,7 @@ function createVenusSvg() {
             location: svg.CoordinateLocation.Relative
         });
 
+    const greenLine = new svg.Style({name:"greenLine", stroke: "#00ff00", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
     s.addPen({style: greenLine})
         .to(centerX, centerY)
         .down()
@@ -240,10 +240,20 @@ function createVenusSvg() {
         .rotate(45)
         .forward(stemLength)
         .back()
-        //.to(centerX + relativeTipX, centerY + relativeTipY)
+        ;
 
-        
-
+    const tealLine = new svg.Style({name:"tealLine", stroke: "#a7faf4", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
+    s.addPen({style: tealLine})
+        .to(centerX, centerY)
+        .down()
+        .rotate(45)
+        .forward(stemLength)
+        .angle(180)
+        .forward(tipLength)
+        .back()
+        .angle(-90)
+        .forward(tipLength)
+        .back()
         ;
 
 
