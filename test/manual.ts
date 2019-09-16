@@ -90,179 +90,60 @@ function createTestSvg() {
 
 function createVenusSvg() {
     const squareSize = 100;
-    const s = new svg.Svg("Venus", squareSize, squareSize);
+    const s = new svg.Svg("test", squareSize, squareSize);
+
+    const strokeWidth = 6;
+    const background = new svg.Style({name:"background", fill:"#ffffff"}); //ffe1ff
+    const blackOutline = new svg.Style({name:"blackOutline", fill:"none", stroke: "#000000", strokeWidth});
+    const blackLine = new svg.Style({name:"blackLine", stroke: "#000000", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
+    // const greenLine = new svg.Style({name:"greenLine", stroke: "#00ff00", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
+
+    //const redLine = new svg.Style({name:"redLine", stroke: "#ff0000", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
+    //const tealLine = new svg.Style({name:"tealLine", stroke: "#a7faf4", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
+    
+    const plusStyle = blackLine;
+    const arrowStyle = blackLine;
+
     const centerX = s.width / 2;
     const centerY = s.height / 2;
     
-    const strokeWidth = 6;
     const circleRadius = (squareSize / 6);
-    //- (strokeWidth / 2);
 
-
-    const background = new svg.Style({name:"background", fill:"#ffe1ff"});
-    const blackOutline = new svg.Style({name:"blackOutline", fill:"none", stroke: "#000000", strokeWidth});
-    //const blackLine = new svg.Style({name:"blackLine", stroke: "#000000", strokeWidth});
-    const redLine = new svg.Style({name:"redLine", stroke: "#ff0000", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
-
-
-
-    s.addCircle({comment:"Background", centerX, centerY, radius: (squareSize / 2), style: background});
-    s.addCircle({comment:"Center Circle", centerX, centerY, radius:circleRadius, style: blackOutline});
+    s.addCircle({comment:"Circle Background", centerX, centerY, radius: (squareSize / 2), style: background});
+    s.addCircle({comment:"Circle Center", centerX, centerY, radius:circleRadius, style: blackOutline});
     
-    const plusSquare = (circleRadius + strokeWidth) / 2.4;
-    const plusSquareLength = plusSquare * 2;
-    //const plusOffset = circleRadius + strokeWidth + (plusSquare / 2);
+//    // add markers
+//    const markLine = new svg.Style({name:"markLine", stroke: "#ff0f00", strokeWidth: 1});
+//    s.addGrid(6, markLine);
 
-    // const plusCenterX = centerX;
-    //const plusCenterY = centerY + plusOffset;
- 
+    const armLength = (circleRadius + strokeWidth) / 2.4;
+    const doubleArmLength = armLength * 2;
 
-    // s.addLine({
-    //     comment:"Plus Vertical", 
-    //     beginX: plusCenterX, 
-    //     beginY: (plusCenterY - plusSquare), 
-    //     endX: plusCenterX,
-    //     endY: (plusCenterY + plusSquare),
-    //     style: blackLine}
-    //     );
-
-    // s.addLine({
-    //     comment:"Plus Horizontal", 
-    //     beginX: (plusCenterX - plusSquare), 
-    //     beginY: plusCenterY, 
-    //     endX: (plusCenterX + plusSquare),
-    //     endY: plusCenterY,
-    //     style: blackLine}
-    //     );
-
-    s.addPen({comment:"Plus", style: redLine})
+    s.addPen({comment:"Plus", style: plusStyle})
         .to(centerX, centerY + circleRadius + strokeWidth / 2 - 2)
         .down()
         .angle(270)
-        .forward(plusSquare + 2)
-        .forward(plusSquare)
+        .forward(armLength + 2)
+        .forward(armLength)
         .back()
         .angle(0)
-        .forward(plusSquare)
+        .forward(armLength)
         .back()
         .angle(180)
-        .forward(plusSquare)
+        .forward(armLength)
         .back()
         ;
 
-
-    // // add markers
-    // const markLine = new svg.Style({name:"markLine", stroke: "#ff0f00", strokeWidth: 1});
-    // const dividers = 6
-    // for (let i = 0; i < dividers; i++) {
-    //     // horizontal
-    //     const divider = (squareSize / dividers) * i;
-    //     s.addLine({
-    //         comment:`divider horizontal ${i}`, 
-    //         beginX: 0, 
-    //         beginY: divider, 
-    //         endX: squareSize,
-    //         endY: divider,
-    //         style: markLine}
-    //         );
-
-    //     s.addLine({
-    //         comment:`divider vertical ${i}`, 
-    //         beginX: divider, 
-    //         beginY: 0, 
-    //         endX: divider,
-    //         endY: squareSize,
-    //         style: markLine}
-    //         );
-        
-    // }
-
-
     // Add Arrow
-    const tipLength = plusSquare * 1.25;
+    const tipLength = armLength * 1.25;
+    const stemLength = doubleArmLength;
 
-
-
-    const angle = Math.PI / 4;
-    const stemX = centerX + circleRadius * Math.sin(angle);
-    const stemY = centerY - circleRadius * Math.cos(angle);
-    const stemLength = plusSquareLength;
-    
-    // const tipX = stemX + stemLength * Math.sin(angle);
-    // const tipY = stemY - stemLength * Math.cos(angle);
-
-    // const arrowStyle = blackLine;
-
-    // s.addLine({
-    //     comment:`Stem`,
-    //     beginX: stemX,
-    //     beginY: stemY,
-    //     endX: tipX,
-    //     endY: tipY,
-    //     style: blackLine,
-    // });
-
-
-    // const tipLeftY = tipY + strokeWidth / 4;
-    // s.addLine({
-    //     comment:`Tip Left`,
-    //     beginX: tipX,
-    //     beginY: tipLeftY,
-    //     endX: tipX - tipLength,
-    //     endY: tipLeftY,
-    //     style: arrowStyle,
-    // });
-
-
-    // const tipRightX = tipX - strokeWidth / 4;
-    // s.addLine({
-    //     comment:`Tip Right`,
-    //     beginX: tipRightX,
-    //     beginY: tipY,
-    //     endX: tipRightX,
-    //     endY: tipY + tipLength,
-    //     style: arrowStyle,
-    // });
-
-    // const relativeTipX = stemLength * Math.sin(angle);
-    // const relativeTipY =  -1 * stemLength * Math.cos(angle);
-    // s.addPath({beginX:centerX, beginY: centerY, style: redLine})
-    //     .lineTo({
-    //         x: relativeTipX,
-    //         y: relativeTipY,
-    //         location: svg.CoordinateLocation.Relative
-    //     })
-    //     .lineTo({
-    //         x: -1 * tipLength,
-    //         y: 0,
-    //         location: svg.CoordinateLocation.Relative
-    //     }).lineTo({
-    //         x: tipLength,
-    //         y: 0,
-    //         location: svg.CoordinateLocation.Relative
-    //     });
-
-    // const greenLine = new svg.Style({name:"greenLine", stroke: "#00ff00", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
-    // s.addPen({style: greenLine})
-    //     .to(centerX, centerY)
-    //     .down()
-    //     .rotate(0)
-    //     .forward(stemLength)
-    //     .back()
-    //     .rotate(45)
-    //     .forward(stemLength)
-    //     .back()
-    //     .rotate(45)
-    //     .forward(stemLength)
-    //     .back()
-    //     ;
-
-    const tealLine = new svg.Style({name:"tealLine", stroke: "#a7faf4", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
-    s.addPen({comment:"Arrow", style: tealLine})
-        .to(stemX, stemY)
+    s.addPen({comment:"Arrow", style: arrowStyle})
+        .to(centerX, centerY)
+        .angle(45)
+        .forward(circleRadius + (strokeWidth / 2) - 2)
         .down()
-        .rotate(45)
-        .forward(stemLength)
+        .forward(stemLength + 2)
         .angle(180)
         .forward(tipLength)
         .back()
@@ -271,6 +152,11 @@ function createVenusSvg() {
         .back()
         ;
 
+    // circle + plus
+    
+    // square + arrow?
+
+    // equilateral triangle + circle?
 
     return s;
 }

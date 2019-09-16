@@ -10,9 +10,12 @@ export abstract class Shape implements ToString {
     public style?: Style = undefined;
     public comment?: string = undefined;
 
-    constructor(public name: string, options: ShapeOptions = {}) {
+    private isContainer: boolean = false;
+
+    constructor(public name: string, options: ShapeOptions = {}, isContainer: boolean = false) {
         this.comment = options.comment;
         this.style = options.style;
+        this.isContainer = isContainer;
     }
 
     
@@ -35,6 +38,6 @@ export abstract class Shape implements ToString {
         });
 
         const comment = this.comment ? new Comment(this.comment).toString() + "\n" : "";
-        return `${comment}<${this.name}${shapeAttributes} />`;
+        return `${comment}<${this.name}${shapeAttributes} ${this.isContainer ? "" : "/"}>`;
     }
 }

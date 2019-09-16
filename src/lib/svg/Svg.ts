@@ -6,6 +6,7 @@ import { Line } from "./Line";
 import { PathAttributes } from "./PathAttributes";
 import { Path } from "./Path";
 import { PenAttributes, PenPath, Pen } from "./Pen";
+import { Style } from ".";
 
 
 export class Svg {
@@ -69,6 +70,31 @@ export class Svg {
         const shape = new PenPath(pen);
         this.shapes.push(shape);
         return shape;
+    }
+
+    public addGrid(dividers: number, style: Style) {
+        for (let i = 0; i <= dividers; i++) {
+            // horizontal
+            const dividerWidth = (this.width / dividers) * i;
+            this.addLine({
+                comment:`divider horizontal ${i}`, 
+                beginX: 0, 
+                beginY: dividerWidth, 
+                endX: this.width,
+                endY: dividerWidth,
+                style
+                });
+
+            const dividerHeight = (this.height / dividers) * i;
+            this.addLine({
+                comment:`divider vertical ${i}`, 
+                beginX: dividerHeight, 
+                beginY: 0, 
+                endX: dividerHeight,
+                endY: this.height,
+                style
+                });
+        }
     }
 
     // private getStyles(): Style[] {
