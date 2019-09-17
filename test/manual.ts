@@ -88,12 +88,16 @@ function createTestSvg() {
 //     const circleRadius = squareSize / 2;
 // }
 
-function createVenusSvg() {
+
+
+
+function createSignSvg(options?: {title?: string, plus?: boolean, arrow?:boolean, background?: string}) {
     const squareSize = 100;
-    const s = new svg.Svg("test", squareSize, squareSize);
+    const s = new svg.Svg(options && options.title ? options.title : "test", squareSize, squareSize);
 
     const strokeWidth = 6;
-    const background = new svg.Style({name:"background", fill:"#ffffff"}); //ffe1ff
+    const backgroundColor = options && options.background ? options.background : "#ffffff";
+    const background = new svg.Style({name:"background", fill:backgroundColor}); //ffe1ff
     const blackOutline = new svg.Style({name:"blackOutline", fill:"none", stroke: "#000000", strokeWidth});
     const blackLine = new svg.Style({name:"blackLine", stroke: "#000000", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
     // const greenLine = new svg.Style({name:"greenLine", stroke: "#00ff00", strokeWidth, strokeLineJoin: svg.StrokeLineJoin.Round});
@@ -116,42 +120,48 @@ function createVenusSvg() {
 //    const markLine = new svg.Style({name:"markLine", stroke: "#ff0f00", strokeWidth: 1});
 //    s.addGrid(6, markLine);
 
+
     const armLength = (circleRadius + strokeWidth) / 2.4;
     const doubleArmLength = armLength * 2;
 
-    s.addPen({comment:"Plus", style: plusStyle})
-        .to(centerX, centerY + circleRadius + strokeWidth / 2 - 2)
-        .down()
-        .angle(270)
-        .forward(armLength + 2)
-        .forward(armLength)
-        .back()
-        .angle(0)
-        .forward(armLength)
-        .back()
-        .angle(180)
-        .forward(armLength)
-        .back()
-        ;
+    if (options && options.plus) {
+        
+        s.addPen({comment:"Plus", style: plusStyle})
+            .to(centerX, centerY + circleRadius + strokeWidth / 2 - 2)
+            .down()
+            .angle(270)
+            .forward(armLength + 2)
+            .forward(armLength)
+            .back()
+            .angle(0)
+            .forward(armLength)
+            .back()
+            .angle(180)
+            .forward(armLength)
+            .back()
+            ;
+    }
 
     // Add Arrow
     const tipLength = armLength * 1.25;
     const stemLength = doubleArmLength;
 
-    s.addPen({comment:"Arrow", style: arrowStyle})
-        .to(centerX, centerY)
-        .angle(45)
-        .forward(circleRadius + (strokeWidth / 2) - 2)
-        .down()
-        .forward(stemLength + 2)
-        .angle(180)
-        .forward(tipLength)
-        .back()
-        .angle(-90)
-        .forward(tipLength)
-        .back()
-        ;
+    if (options && options.arrow) {
 
+        s.addPen({comment:"Arrow", style: arrowStyle})
+            .to(centerX, centerY)
+            .angle(45)
+            .forward(circleRadius + (strokeWidth / 2) - 2)
+            .down()
+            .forward(stemLength + 2)
+            .angle(180)
+            .forward(tipLength)
+            .back()
+            .angle(-90)
+            .forward(tipLength)
+            .back()
+            ;
+    }
     // circle + plus
     
     // square + arrow?
@@ -181,9 +191,26 @@ function testSvg() {
 
     const test = createTestSvg();
     writeSvg(test);
+    /*
+    "#ffffff"
+    "#fee6fe"
+    "#e6fefe"
+    */
 
-    const venus = createVenusSvg();
+    const backgrounds = ["#ffcccc", "#ccffcc", "#ccccff"];
+    
+    //["#ffe6e6", "#e6ffe6", "#e6e6ff"];
+
+
+
+    const venus = createSignSvg({title:"Venus", plus: true, background: backgrounds[0]});
     writeSvg(venus);
+
+    const neutral = createSignSvg({title:"Neutral", background:backgrounds[1]});
+    writeSvg(neutral);
+
+    const mars = createSignSvg({title:"Mars", arrow: true, background: backgrounds[2]});
+    writeSvg(mars);
 }
 
 testSvg();
