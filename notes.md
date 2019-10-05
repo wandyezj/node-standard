@@ -15,11 +15,15 @@
 
     * `-access=public` is requires to publish the package under the scope
 
+1. [deprecate old versions](#deprecate)
+
 1. > npm logout
 
 1. > git tag `version`
     * `version` the version of the package
 1. > git push
+
+
 
 ## unpublish
 
