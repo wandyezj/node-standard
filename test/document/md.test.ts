@@ -1,5 +1,5 @@
 import * as document from "../../src/lib/document";
-import * as standard from "../index";
+// import * as standard from "../index";
 
 test('md', async () => {
 
@@ -18,7 +18,9 @@ test('md', async () => {
 
     const actual = document.mdToHtml(input);
     
-    console.log(standard.string.visualizeWhitespaceIndent(expected));
-    console.log(standard.string.visualizeWhitespaceIndent(actual));
+    // console.log("Expected:");
+    // console.log(standard.string.visualizeWhitespaceIndent(expected));
+    // console.log("Actual:");
+    // console.log(standard.string.visualizeWhitespaceIndent(actual));
     expect(actual).toEqual(expected);
 });

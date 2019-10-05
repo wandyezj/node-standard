@@ -21,7 +21,7 @@ test('mergeWithDefaults', async () => {
         valueNumber: 1,
         valueArray: []
     }
-    const actual = standard.object.mergeWithDefaults(input, testDefault);
+    const actual = standard.object.mergeWithDefaults<Test>(input, testDefault);
 
     // console.log(expected);
     // console.log(actual);

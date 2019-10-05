@@ -11,7 +11,14 @@ import * as standardPath from "./path";
  * @param path
  */
 export function read(path: string): string {
-    const string: string = fs.readFileSync(path, "utf-8");
+    let string: string = fs.readFileSync(path, "utf-8");
+    
+    // remove the BOM
+    // https://en.wikipedia.org/wiki/Byte_order_mark
+    // The BOM is generally unexpected in text files and causes JSON.parse to fail.
+    // U+FEFF is the Byte Order Mark for UTF-8
+    string = string.replace(/^\uFEFF/, "");
+    
     const clean = standardString.standardizeNewlines(string);
     return clean;
 }

@@ -14,10 +14,10 @@ export function mergeWithDefaults<T extends object>(original: Partial<T>, defaul
 
     const o: any = original;
     const d: any = defaults;
-    const merge: any = shallowCopyOwnProperties(original);
+    const merge: any = {};//shallowCopyOwnProperties(original);
 
     Object.getOwnPropertyNames(defaults).forEach((name) => {
-        merge[name] = Object.hasOwnProperty(name) ? o[name] : d[name];
+        merge[name] = o.hasOwnProperty(name) ? o[name] : d[name];
     });
 
     return merge;

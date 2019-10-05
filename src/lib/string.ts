@@ -34,7 +34,7 @@ export function insertTabs(string: string, count: number = 1): string {
 /**
  * describe a single level of indent
  */
-interface Indent {
+export interface Indent {
     /**
      * the value to use for the indent
      * default of four spaces
@@ -96,12 +96,20 @@ export function capitalize(string: string): string {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+export function decapitalize(string: string): string {
+    if (string.length === 0) {
+        return string;
+    }
+    return string.charAt(0).toLowerCase() + string.slice(1);
+}
+
+
 export function escapeRegularExpression(s: string) {
     return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 }
 
 
-interface WhitespaceVisualize {
+export interface WhitespaceVisualize {
     space: string;
     newline: string;
     tab: string;
@@ -123,10 +131,59 @@ export function visualizeWhitespaceIndent(string: string, vizualize: Partial<Whi
         const whitespace = line.substring(0, index);
         const contents = line.substring(index);
 
-        const updated = whitespace.replace(/ /g, settings.space).replace(/\n/g, settings.newline).replace(/\t/g, settings.tab);
+        const updated = whitespace.replace(/[\t]/g, settings.tab).replace(/[ ]/g, settings.space);
         return updated + contents;
 
-    }).join("\n");
+    }).join("\n").replace(/\n/g, settings.newline);
 
     return visualized;
+}
+
+
+function isUpperCase(string: string) {
+    return string === string.toUpperCase();
+}
+
+/**
+ * camelCase
+ * @param string 
+ */
+export function camelCase(string: string): string {
+    return decapitalize(string);
+}
+
+/**
+ * PascalCase
+ * @param string 
+ */
+export function pascalCase(string: string): string {
+    return capitalize(string);
+}
+
+/**
+ * snake_case
+ * @param string
+ */
+export function snakeCase(string: string): string {
+
+    let i = 0;
+    let startIndex = 0;
+    let words = [];
+    for (i=0; i < string.length; i++) {
+        const c = string[i];
+        if (isUpperCase(c)) {
+            const word = string.slice(startIndex, i);
+            if (word.length > 0) {
+                words.push(word)
+            }
+            
+            startIndex = i;
+        }
+    }
+    const word = string.slice(startIndex);
+    words.push(word);
+
+    const snake = words.join("_").toLowerCase();
+    
+    return snake;
 }
