@@ -6,12 +6,14 @@
 
 ## publish
 
+1. > npm run build
+
 1. > npm version `patch`
     * update the {patch, major, minor} version of the package
 
 1. > npm login
 
-1. > npm publish -access=public
+1. > npm publish -access=public --otp=`one time pass`
 
     * `-access=public` is requires to publish the package under the scope
 
