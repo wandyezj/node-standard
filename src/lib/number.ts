@@ -1,3 +1,7 @@
+/**
+ * {0, 1, 2, ...}
+ * @param n 
+ */
 export function isWhole(n: number) {
     return (n - Math.floor(n)) === 0;
 }
