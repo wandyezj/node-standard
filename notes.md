@@ -6,10 +6,11 @@
 
 ## publish
 
-1. > npm run build
 
 1. > npm version `patch`
     * update the {patch, major, minor} version of the package
+
+1. > npm run build
 
 1. > npm login
 
