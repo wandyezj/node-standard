@@ -179,6 +179,7 @@ function writeSvg(image: svg.Svg) {
 ${image.title}
 
 `);
+    standard.directory.create(outManualDirectory);
     const file = path.join(outManualDirectory, `${image.title}.svg`);
     const text = image.toString();
     console.log(text);

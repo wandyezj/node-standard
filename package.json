@@ -11,9 +11,10 @@
     "test": "jest",
     "prettier-check": "./node_modules/.bin/prettier --check src/**/*.ts",
     "prettier": "./node_modules/.bin/prettier --config .prettierrc --write src/**/*.ts",
-    "manual": "cd test && ts-node ./manual.ts",
+    "manual": "./node_modules/.bin/ts-node ./test/manual.ts",
     "clean": "if exist dist (rmdir /s /q dist)",
-    "build": "./node_modules/.bin/tsc"
+    "build": "./node_modules/.bin/tsc",
+    "api-extractor": "./node_modules/.bin/api-extractor"
   },
   "repository": {
     "type": "git",
@@ -29,10 +30,12 @@
     "@types/node": "10.14.15"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.5.2",
     "@types/jest": "^24.0.18",
     "jest": "^24.9.0",
     "prettier": "1.18.2",
     "ts-jest": "^24.0.2",
+    "ts-node": "^8.5.2",
     "typescript": "^3.5.3"
   }
 }
