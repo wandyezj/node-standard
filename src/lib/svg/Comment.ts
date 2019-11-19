@@ -1,4 +1,4 @@
-import { ToString } from "./ToString";
+import ToString from "./ToString";
 
 
 export class Comment implements ToString {

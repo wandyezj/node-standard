@@ -171,6 +171,26 @@ function createSignSvg(options?: {title?: string, plus?: boolean, arrow?:boolean
     return s;
 }
 
+function createLetterSvg(letter: string) {
+    const squareSize = 100;
+    const s = new svg.Svg(letter, squareSize, squareSize);
+    
+    const backgroundColor = "green";
+    const background = new svg.Style({name:"background", fill:backgroundColor});
+
+    const centerX = s.width / 2;
+    const centerY = s.height / 2;
+    const radius = (squareSize / 2);
+    s.addCircle({comment:"Circle Background", centerX, centerY, radius, style: background});
+
+    const text = letter;
+    const x = centerX;
+    const y = centerY;
+    s.addText({text, x, y});
+
+    return s;
+}
+
 const outManualDirectory = path.join(__dirname, "out/manual");
 
 function writeSvg(image: svg.Svg) {
@@ -212,6 +232,9 @@ function testSvg() {
 
     const mars = createSignSvg({title:"Mars", arrow: true, background: backgrounds[2]});
     writeSvg(mars);
+
+    const letterA = createLetterSvg("A");
+    writeSvg(letterA);
 }
 
 testSvg();

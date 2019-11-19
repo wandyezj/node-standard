@@ -1,8 +1,8 @@
-import { Shape } from "./Shape";
+import ShapeAbstract from "./ShapeAbstract";
 import { LineAttributes } from "./LineAttributes";
 
 
-export class Line extends Shape implements LineAttributes {
+export class Line extends ShapeAbstract implements LineAttributes {
 
     public beginX: number;
     public beginY: number;

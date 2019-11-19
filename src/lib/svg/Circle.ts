@@ -1,7 +1,7 @@
-import { Shape } from "./Shape";
+import ShapeAbstract from "./ShapeAbstract";
 import { CircleAttributes } from "./CircleAttributes";
 
-export class Circle extends Shape implements CircleAttributes {
+export class Circle extends ShapeAbstract implements CircleAttributes {
     public centerX: number;
     public centerY: number;
     public radius: number;

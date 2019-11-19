@@ -1,4 +1,4 @@
 
-export interface ToString {
+export default interface ToString {
     toString(): string;
 }

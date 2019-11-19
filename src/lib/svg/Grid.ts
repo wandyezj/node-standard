@@ -1,4 +1,5 @@
-import { ShapeOptions, Shape } from ".";
+import { ShapeOptions,  } from ".";
+import ShapeAbstract from "./ShapeAbstract";
 
 export interface GridAttributes extends ShapeOptions {
     dividers: number;
@@ -8,7 +9,7 @@ export interface GridAttributes extends ShapeOptions {
     endY: number;
 }
 
-export class Grid extends Shape implements GridAttributes{
+export class Grid extends ShapeAbstract implements GridAttributes{
 
     public dividers: number = 0;
     public beginX: number = 0;

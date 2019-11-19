@@ -1,10 +1,10 @@
-import { TextAttributes } from "./TextAttributes";
-import Element from "./Element";
+import TextAttributes from "./TextAttributes";
+import ElementFactory from "./ElementFactory";
 
 export default class Text implements TextAttributes {
-    public x: number = 0;    
+    public x: number = 0;
     public y: number = 0;
-    public text: number = 0;
+    public text: string = "";
 
     constructor(attributes: TextAttributes) {
         this.x = attributes.x;
@@ -13,7 +13,9 @@ export default class Text implements TextAttributes {
     }
 
     toString(): string {
-        new Element("text")
+        return ElementFactory.create("text")
+            .setContent(this.text)
+            .setAttributes([["x", this.x.toString()], ["y", this.y.toString()]])
+            .toString();
     }
-
 }

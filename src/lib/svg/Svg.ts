@@ -1,13 +1,14 @@
 import { CircleAttributes } from "./CircleAttributes";
 import { Circle } from "./Circle";
-import { Shape } from "./Shape";
 import { LineAttributes } from "./LineAttributes";
 import { Line } from "./Line";
 import { PathAttributes } from "./PathAttributes";
 import { Path } from "./Path";
 import { PenAttributes, PenPath, Pen } from "./Pen";
-import { Style } from ".";
-
+import { Style} from ".";
+import Shape from "./Shape";
+import TextAttributes from "./TextAttributes";
+import Text from "./Text";
 
 export class Svg {
 
@@ -52,6 +53,10 @@ export class Svg {
     }
 
     // Convenience
+    public addText(text: TextAttributes) {
+        this.shapes.push(new Text(text));
+    }
+
     public addCircle(circle: CircleAttributes) {
         this.shapes.push(new Circle(circle));
     }
@@ -60,7 +65,7 @@ export class Svg {
         this.shapes.push(new Line(line));
     }
 
-    public addPath(path: PathAttributes) {
+    public addPath(path: PathAttributes): Path {
         const shape = new Path(path);
         this.shapes.push(shape);
         return shape;

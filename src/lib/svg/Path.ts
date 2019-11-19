@@ -1,5 +1,5 @@
 
-import { Shape } from ".";
+import ShapeAbstract from "./ShapeAbstract";
 import { PathAttributes } from "./PathAttributes";
 import { PathCoordinate, CoordinateLocation } from "./PathCoordinate";
 
@@ -8,7 +8,7 @@ function isRelativeCoordinate(coordinates: PathCoordinate): boolean {
     return coordinates.location !== undefined && coordinates.location === CoordinateLocation.Relative;
 }
 
-export class Path extends Shape {
+export class Path extends ShapeAbstract {
     
     private segments: string[] = [];
 

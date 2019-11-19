@@ -1,10 +1,8 @@
 import { StrokeLineJoin } from "./StrokeLineJoin";
 import { StyleAttributes } from "./StyleAttributes";
-import { ToString } from "./ToString";
+import ToString from "./ToString";
 
-
-
-export class Style implements ToString, StyleAttributes {
+export default class Style implements ToString, StyleAttributes {
 
 
     public name: string;
