@@ -26,8 +26,12 @@ export default class ElementFactory {
         return this;
     }
 
-    public setAttributes(attributes: [string, string][]): ElementFactory {
-        this.attributes = new Map(attributes);
+    public setAttributes(attributes: [string, string | undefined][]): ElementFactory {
+
+        // remove all attributes with undefined values
+        const valueAttributes: [string, string][] = attributes.filter((v:[string, string | undefined]) => v[1] !== undefined) as [string, string][];
+
+        this.attributes = new Map(valueAttributes);
         return this;
     }
 

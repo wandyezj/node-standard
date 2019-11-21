@@ -1,15 +1,15 @@
 import { StrokeLineJoin } from "./StrokeLineJoin";
-import { StyleAttributes } from "./StyleAttributes";
+import StyleAttributes from "./StyleAttributes";
 import ToString from "./ToString";
 
 export default class Style implements ToString, StyleAttributes {
 
-
-    public name: string;
+    public readonly name: string;
     public fill?: string;
     public stroke?: string;
     public strokeWidth?: number;
     public strokeLineJoin?: StrokeLineJoin;
+    public font?: string;
 
     constructor(attributes: StyleAttributes) {
         // name must be continuous
@@ -18,6 +18,7 @@ export default class Style implements ToString, StyleAttributes {
         this.stroke = attributes.stroke
         this.strokeWidth = attributes.strokeWidth;
         this.strokeLineJoin = attributes.strokeLineJoin;
+        this.font = attributes.font;
     }
 
     private getAttributes(): string{
@@ -25,7 +26,8 @@ export default class Style implements ToString, StyleAttributes {
             ["fill", this.fill],
             ["stroke", this.stroke],
             ["stroke-width", this.strokeWidth? this.strokeWidth.toString() : undefined],
-            ["stroke-linejoin", this.strokeLineJoin]
+            ["stroke-linejoin", this.strokeLineJoin],
+            ["font", this.font]
         ];
 
         return attributes.map((attribute: [string, string| undefined]) => {

@@ -183,10 +183,16 @@ function createLetterSvg(letter: string) {
     const radius = (squareSize / 2);
     s.addCircle({comment:"Circle Background", centerX, centerY, radius, style: background});
 
+    const textStyle = s.addStyle({
+        name: "letterStyle",
+        font: "bold 90px serif",
+        fill: "black"
+    })
+
     const text = letter;
     const x = centerX;
     const y = centerY;
-    s.addText({text, x, y});
+    s.addText({text, x, y, style: textStyle});
 
     return s;
 }

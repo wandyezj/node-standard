@@ -18,4 +18,9 @@ export interface StyleOptions {
      * https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin
      */
     strokeLineJoin?: StrokeLineJoin;
+
+    /**
+     * bold 90px serif
+     */
+    font?: string;
 }

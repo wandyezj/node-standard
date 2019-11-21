@@ -1,5 +1,5 @@
 import { StyleOptions } from "./StyleOptions";
 
-export interface StyleAttributes extends StyleOptions {
-    name: string;
+export default interface StyleAttributes extends StyleOptions {
+    readonly name: string;
 }

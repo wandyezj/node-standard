@@ -9,6 +9,7 @@ import { Style} from ".";
 import Shape from "./Shape";
 import TextAttributes from "./TextAttributes";
 import Text from "./Text";
+import StyleAttributes from "./StyleAttributes";
 
 export class Svg {
 
@@ -50,6 +51,28 @@ export class Svg {
 
     public addShape(shape: Shape) {
         this.shapes.push(shape);
+    }
+
+
+    private styleMap: Map<string, Style> = new Map();
+
+    /**
+     * adds a style to the SVG 
+     * @param style
+     * @return name of the style added 
+     */
+    public addStyle(style: StyleAttributes): Style {
+        const name = style.name;
+
+        if (this.styleMap.has(name)) {
+            throw `Style with name [${name}] already defined`;
+        }
+
+        const created = new Style(style);
+
+        this.styleMap.set(name, created);
+        
+        return created;
     }
 
     // Convenience
@@ -125,9 +148,13 @@ export class Svg {
         const height = this.height;
         const title = this.title;
 
-        // figure out styles and shapes
         const styleMap: Map<string, string> = new Map();
 
+        this.styleMap.forEach((value: Style, key: string) => {
+            styleMap.set(key, value.toString());
+        });
+
+        // figure out styles and shapes
         const shapes: string[] = [];
 
         this.shapes.forEach((shape: Shape) => {
@@ -145,7 +172,6 @@ export class Svg {
                     }
                 } else {
                     styleMap.set(key, value);
-
                 }
             }
 
