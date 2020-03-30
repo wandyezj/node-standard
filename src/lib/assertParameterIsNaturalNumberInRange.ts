@@ -21,6 +21,6 @@ export function assertParameterIsNaturalNumberInRange(
     const valid = isNaturalNumber(n) && isNumberInRange(n, minimum, maximum);
     assertParameter(
         valid,
-        `${variable} = [${n}] expected n ∈ ℕ₀ and n <= ${minimum} and n >= ${maximum}`
+        `${variable} = [${n}] expected n ∈ ℕ₀, and n <= ${minimum}, and n >= ${maximum}`
     );
 }

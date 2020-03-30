@@ -16,9 +16,8 @@
     "build": "./node_modules/.bin/tsc",
     "api-extractor": "./node_modules/.bin/api-extractor",
     "api-extractor-run": "./node_modules/.bin/api-extractor run",
-    "api-documenter":"./node_modules/.bin/api-documenter",
-    "api-documenter-run":"node_modules/.bin/api-documenter markdown --input-folder temp --output-folder documentation"
-
+    "api-documenter": "./node_modules/.bin/api-documenter",
+    "api-documenter-run": "node_modules/.bin/api-documenter markdown --input-folder temp --output-folder documentation"
   },
   "repository": {
     "type": "git",
@@ -31,16 +30,16 @@
   },
   "homepage": "https://github.com/wandyezj/standard-node#readme",
   "dependencies": {
-    "@microsoft/api-documenter": "^7.7.16",
     "@types/node": "10.14.15"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.5.2",
-    "@types/jest": "^24.0.18",
+    "@microsoft/api-documenter": "^7.7.16",
+    "@microsoft/api-extractor": "^7.7.12",
+    "@types/jest": "^24.9.1",
     "jest": "^24.9.0",
-    "prettier": "1.18.2",
-    "ts-jest": "^24.0.2",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.3.0",
     "ts-node": "^8.5.2",
-    "typescript": "^3.5.3"
+    "typescript": "^3.8.3"
   }
 }
