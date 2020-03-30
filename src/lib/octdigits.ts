@@ -1,2 +1,5 @@
-
-export const octdigits = '01234567';
+/**
+ * [0-7]
+ * @public
+ */
+export const octdigits = "01234567";

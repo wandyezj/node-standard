@@ -2,21 +2,22 @@ import { isUpperCase } from "./isUpperCase";
 
 /**
  * snake_case
- * @param string
+ * converts from PascalCase or camelCase to snake_case
+ * @param string - string
+ * @public
  */
 export function snakeCase(string: string): string {
-
     let i = 0;
     let startIndex = 0;
     let words = [];
-    for (i=0; i < string.length; i++) {
+    for (i = 0; i < string.length; i++) {
         const c = string[i];
         if (isUpperCase(c)) {
             const word = string.slice(startIndex, i);
             if (word.length > 0) {
-                words.push(word)
+                words.push(word);
             }
-            
+
             startIndex = i;
         }
     }
@@ -24,6 +25,6 @@ export function snakeCase(string: string): string {
     words.push(word);
 
     const snake = words.join("_").toLowerCase();
-    
+
     return snake;
 }

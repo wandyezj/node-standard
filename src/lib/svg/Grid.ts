@@ -1,4 +1,4 @@
-import { ShapeOptions,  } from ".";
+import { ShapeOptions } from ".";
 import ShapeAbstract from "./ShapeAbstract";
 
 export interface GridAttributes extends ShapeOptions {
@@ -9,8 +9,7 @@ export interface GridAttributes extends ShapeOptions {
     endY: number;
 }
 
-export class Grid extends ShapeAbstract implements GridAttributes{
-
+export class Grid extends ShapeAbstract implements GridAttributes {
     public dividers: number = 0;
     public beginX: number = 0;
     public beginY: number = 0;
@@ -28,7 +27,6 @@ export class Grid extends ShapeAbstract implements GridAttributes{
 
     toString() {
         super.setAttributes([]);
-        
 
         return `${super.toString()}
 </g>`;

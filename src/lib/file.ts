@@ -2,7 +2,7 @@
 // designed to work exclusively with text based files
 
 import * as fs from "fs";
-import {path as standardPath} from "./path";
+import { path as standardPath } from "./path";
 import { standardizeNewlines } from "./standardizeNewlines";
 import { listWithoutDuplicateElements } from "./listWithoutDuplicateElements";
 import { lineSplit } from "./lineSplit";

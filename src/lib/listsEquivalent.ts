@@ -1,5 +1,3 @@
-
-
 /**
  * checks if two lists have the same values in the same order using the default comparison operator.
  * @public

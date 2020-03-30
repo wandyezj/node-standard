@@ -7,7 +7,7 @@ import * as fs from "fs";
 export namespace path {
     /**
      * is the path a directory?
-     * 
+     *
      * @param path - path to test
      * @returns true when the path is a directory
      * @public
@@ -18,7 +18,7 @@ export namespace path {
 
     /**
      * is the path a file?
-     * 
+     *
      * @param path - path to test
      * @returns true when the path is a file
      * @public

@@ -1,6 +1,6 @@
-
 /**
  * [a-z][A-Z]
  * @public
  */
-export const asciiLetters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+export const asciiLetters =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";

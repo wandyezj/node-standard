@@ -1,60 +1,36 @@
 // standard set of functions for doing basic things.
 
-import {path} from "./lib/path";
-import {directory} from "./lib/directory";
-import {file} from "./lib/file";
+export { path } from "./lib/path";
+export { directory } from "./lib/directory";
+export { file } from "./lib/file";
 
 // Numbers
-import {isNumberInRange} from "./lib/isNumberInRange";
-import {isWholeNumber} from "./lib/isWholeNumber";
+export { isNumberInRange } from "./lib/isNumberInRange";
+export { isWholeNumber } from "./lib/isWholeNumber";
 
 // Strings
-import {trimEndAllLines} from "./lib/trimEndAllLines";
-import {indent, IndentOptions} from "./lib/indent";
-import {asciiLowercase} from "./lib/asciiLowercase";
-import {asciiUppercase} from "./lib/asciiUppercase";
-import {asciiLetters} from "./lib/asciiLetters";
-import {digits} from "./lib/digits";
+export { trimEndAllLines } from "./lib/trimEndAllLines";
+export { indent, IndentOptions } from "./lib/indent";
+export { snakeCase } from "./lib/snakeCase";
+export { pascalCase } from "./lib/pascalCase";
+export { camelCase } from "./lib/camelCase";
+export { standardizeNewlines } from "./lib/standardizeNewlines";
+
+export { asciiLowercase } from "./lib/asciiLowercase";
+export { asciiUppercase } from "./lib/asciiUppercase";
+export { asciiLetters } from "./lib/asciiLetters";
+export { digits } from "./lib/digits";
+export { punctuation } from "./lib/punctuation";
+export { octdigits } from "./lib/octdigits";
+
+// Lists
+export { listsEquivalent } from "./lib/listsEquivalent";
+export {
+    listWithoutDuplicateElements,
+} from "./lib/listWithoutDuplicateElements";
+export {
+    listWithoutWhitespaceElements,
+} from "./lib/listWithoutWhitespaceElements";
 
 // Objects
-import {mergeWithDefaults} from "./lib/mergeWithDefaults"
-
-
-
-export {
-    path,
-    directory,
-    file,
-    // Numbers
-    isNumberInRange,
-    isWholeNumber,
-
-    // Strings
-    trimEndAllLines,
-    indent,
-    IndentOptions,
-    asciiLetters,
-    asciiLowercase,
-    asciiUppercase,
-    digits,
-
-    // Objects
-    mergeWithDefaults,
-};
-
-
-// import * as list from "./lib/list";
-// import * as string from "./lib/string";
-// import * as object from "./lib/object";
-// import * as number from "./lib/isPositiveNumber";
-// import * as parameter from "./lib/assertParameter";
-// import * as path from "./lib/path";
-// import * as file from "./lib/file";
-// import * as directory from "./lib/directory";
-// import * as math from "./lib/degreesToRadians";
-
-// export { list, string, object, parameter, number, path, file, directory, math };
-
-// import {removeDuplicates, removeEmpty, equivalent} from "./lib/list";
-
-// export {removeDuplicates, removeEmpty, equivalent}
+export { mergeWithDefaults } from "./lib/mergeWithDefaults";

@@ -8,10 +8,17 @@
 
 |  Function | Description |
 |  --- | --- |
+|  [camelCase(string)](./standard-node.camelcase.md) | camelCase splits on spaces and capitalizes words in between |
 |  [indent(string, indent)](./standard-node.indent.md) | indent all lines with the specified level of indent. |
 |  [isNumberInRange(n, minimum, maximum)](./standard-node.isnumberinrange.md) | n is in range \[minimum, maximum\] range is inclusive |
 |  [isWholeNumber(n)](./standard-node.iswholenumber.md) | Is the number a natural number including zero? |
+|  [listsEquivalent(a, b)](./standard-node.listsequivalent.md) | checks if two lists have the same values in the same order using the default comparison operator. |
+|  [listWithoutDuplicateElements(original)](./standard-node.listwithoutduplicateelements.md) | creates list without duplicates from an original list, comparing using the default comparison operator, keeping only the first occurrence. |
+|  [listWithoutWhitespaceElements(original)](./standard-node.listwithoutwhitespaceelements.md) | trims all strings and removes all strings that are pure whitespace from the list. |
 |  [mergeWithDefaults(original, defaults)](./standard-node.mergewithdefaults.md) | create a new object that ensure all default properties are present |
+|  [pascalCase(string)](./standard-node.pascalcase.md) | PascalCase splits on spaces and capitalizes words in between |
+|  [snakeCase(string)](./standard-node.snakecase.md) | snake\_case converts from PascalCase or camelCase to snake\_case |
+|  [standardizeNewlines(string)](./standard-node.standardizenewlines.md) | standardize newlines to proper unix line endings |
 |  [trimEndAllLines(string)](./standard-node.trimendalllines.md) | remove whitespace from the end of all lines |
 
 ## Interfaces
@@ -36,4 +43,6 @@
 |  [asciiLowercase](./standard-node.asciilowercase.md) | \[a-z\] |
 |  [asciiUppercase](./standard-node.asciiuppercase.md) | \[A-Z\] |
 |  [digits](./standard-node.digits.md) | \[0-9\] |
+|  [octdigits](./standard-node.octdigits.md) | \[0-7\] |
+|  [punctuation](./standard-node.punctuation.md) | punctuation characters |
 

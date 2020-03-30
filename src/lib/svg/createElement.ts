@@ -1,4 +1,4 @@
-import {TagType} from "./TagType";
+import { TagType } from "./TagType";
 import createTag from "./createTag";
 
 export function createElement(
@@ -6,7 +6,6 @@ export function createElement(
     attributes?: Map<string, string>,
     content?: string
 ) {
-
     if (content) {
         const start = createTag(TagType.Start, name, attributes);
         const end = createTag(TagType.End, name);

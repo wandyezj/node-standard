@@ -1,7 +1,6 @@
 import { joinWords } from "./joinWords";
 import { capitalize } from "./capitalize";
 
-
 /**
  * PascalCase
  * splits on spaces and capitalizes words in between
@@ -9,6 +8,6 @@ import { capitalize } from "./capitalize";
  * @public
  */
 export function pascalCase(string: string): string {
-    string = joinWords(string)
+    string = joinWords(string);
     return capitalize(string);
 }

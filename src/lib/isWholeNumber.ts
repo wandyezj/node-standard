@@ -5,5 +5,5 @@
  * @public
  */
 export function isWholeNumber(n: number) {
-    return (n - Math.floor(n)) === 0;
+    return n - Math.floor(n) === 0;
 }

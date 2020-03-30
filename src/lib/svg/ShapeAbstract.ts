@@ -1,22 +1,24 @@
 import Style from "./Style";
 import { ShapeOptions } from "./ShapeOptions";
-import {Comment} from "./Comment";
+import { Comment } from "./Comment";
 import Shape from "./Shape";
 
 export default abstract class ShapeAbstract implements Shape {
-
     public style?: Style = undefined;
     public comment?: string = undefined;
 
     private isContainer: boolean = false;
 
-    constructor(public name: string, options: ShapeOptions = {}, isContainer: boolean = false) {
+    constructor(
+        public name: string,
+        options: ShapeOptions = {},
+        isContainer: boolean = false
+    ) {
         this.comment = options.comment;
         this.style = options.style;
         this.isContainer = isContainer;
     }
 
-    
     private attributes: Map<string, string> = new Map();
     protected setAttributes(attributes: [string, string][]) {
         // set all attributes
@@ -25,7 +27,7 @@ export default abstract class ShapeAbstract implements Shape {
         if (this.style) {
             attributes.unshift(["class", this.style.name]);
         }
-        
+
         this.attributes = new Map(attributes);
     }
 
@@ -35,7 +37,11 @@ export default abstract class ShapeAbstract implements Shape {
             shapeAttributes += ` ${key}="${value}"`;
         });
 
-        const comment = this.comment ? new Comment(this.comment).toString() + "\n" : "";
-        return `${comment}<${this.name}${shapeAttributes} ${this.isContainer ? "" : "/"}>`;
+        const comment = this.comment
+            ? new Comment(this.comment).toString() + "\n"
+            : "";
+        return `${comment}<${this.name}${shapeAttributes} ${
+            this.isContainer ? "" : "/"
+        }>`;
     }
 }

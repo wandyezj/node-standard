@@ -1,4 +1,4 @@
-import {lstatSync} from "fs";
+import { lstatSync } from "fs";
 /**
  * is the path a directory?
  * @param path

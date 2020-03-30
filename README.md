@@ -1,6 +1,6 @@
-# node-standard
+# standard-node
 
-Standard node operations in nice wrappers.
+Standard operations in nice wrappers.
 
 * string
 * list
@@ -58,4 +58,8 @@ The same words should be used for the same action, patterns should be applicable
 
 ## Thoughts
 
-Would it make sense to have the entire library be functional where ever possible and to only have a single top level namespace?
+Does it make sense to have the library to eliminate hierarchy in favor of individual importable functions?
+    - may ease maintenance
+    - may ease lookup of functions since there is one place to look
+    - can introduce the concept of function groups later
+

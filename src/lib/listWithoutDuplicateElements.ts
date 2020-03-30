@@ -1,6 +1,6 @@
 /**
  * creates list without duplicates from an original list, comparing using the default comparison operator, keeping only the first occurrence.
- * @param original - list to 
+ * @param original - list to
  * @returns new list without the duplicates present in the original
  * @public
  */

@@ -1,5 +1,3 @@
-
-
 /**
  * n is in range [minimum, maximum]
  * range is inclusive

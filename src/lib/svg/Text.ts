@@ -16,8 +16,11 @@ export default class Text implements TextAttributes {
     }
 
     toString(): string {
-
-        const attributes: [string, string | undefined][] = [["x", this.x.toString()], ["y", this.y.toString()], ["class", this.style ? this.style.name : undefined]];
+        const attributes: [string, string | undefined][] = [
+            ["x", this.x.toString()],
+            ["y", this.y.toString()],
+            ["class", this.style ? this.style.name : undefined],
+        ];
 
         return ElementFactory.create("text")
             .setContent(this.text)

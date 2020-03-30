@@ -1,14 +1,12 @@
-
 export interface PathCoordinate {
-    x: number,
-    y: number,
-    location: CoordinateLocation
+    x: number;
+    y: number;
+    location: CoordinateLocation;
 }
-
 
 export enum CoordinateSystem {
     Cartesian,
-    Polar
+    Polar,
 }
 
 export enum CoordinateLocation {
@@ -19,12 +17,12 @@ export enum CoordinateLocation {
     /**
      * relative to previous position
      */
-    Relative
+    Relative,
 }
 
 export enum Angle {
     Radians,
-    Degrees
+    Degrees,
 }
 
 export interface Coordinate {
@@ -62,13 +60,18 @@ export interface CoordinateCartesianAbsolute extends CoordinateCartesian {
     location: CoordinateLocation.Absolute;
 }
 
-export function polarToRelativeCartesian(coordinate: CoordinatePolar): CoordinateCartesianRelative {
+export function polarToRelativeCartesian(
+    coordinate: CoordinatePolar
+): CoordinateCartesianRelative {
     let radians = 0;
 
     if (coordinate.angle === Angle.Degrees) {
-        radians = Math.PI * 2 * ((coordinate as CoordinatePolarDegrees).degrees % 360) / 360;
-    }
-    else if (coordinate.angle === Angle.Radians) {
+        radians =
+            (Math.PI *
+                2 *
+                ((coordinate as CoordinatePolarDegrees).degrees % 360)) /
+            360;
+    } else if (coordinate.angle === Angle.Radians) {
         radians = (coordinate as CoordinatePolarRadians).radians;
     }
 
@@ -80,7 +83,7 @@ export function polarToRelativeCartesian(coordinate: CoordinatePolar): Coordinat
         x,
         y,
         location: CoordinateLocation.Relative,
-        system: CoordinateSystem.Cartesian
+        system: CoordinateSystem.Cartesian,
     };
 
     return cartesian;

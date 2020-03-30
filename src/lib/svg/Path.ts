@@ -1,15 +1,15 @@
-
 import ShapeAbstract from "./ShapeAbstract";
 import { PathAttributes } from "./PathAttributes";
 import { PathCoordinate, CoordinateLocation } from "./PathCoordinate";
 
-
 function isRelativeCoordinate(coordinates: PathCoordinate): boolean {
-    return coordinates.location !== undefined && coordinates.location === CoordinateLocation.Relative;
+    return (
+        coordinates.location !== undefined &&
+        coordinates.location === CoordinateLocation.Relative
+    );
 }
 
 export class Path extends ShapeAbstract {
-    
     private segments: string[] = [];
 
     private addSegment(segment: string) {
@@ -29,7 +29,7 @@ export class Path extends ShapeAbstract {
 
     /**
      * uses absolute coordinates by default
-     * @param coordinates 
+     * @param coordinates
      */
     public lineTo(coordinates: PathCoordinate) {
         const command: string = isRelativeCoordinate(coordinates) ? "l" : "L";
@@ -40,7 +40,7 @@ export class Path extends ShapeAbstract {
 
     /**
      * uses absolute coordinates by default
-     * @param coordinate 
+     * @param coordinate
      */
     public moveTo(coordinate: PathCoordinate) {
         const command: string = isRelativeCoordinate(coordinate) ? "m" : "M";
@@ -50,9 +50,7 @@ export class Path extends ShapeAbstract {
     }
 
     public toString(): string {
-        super.setAttributes([
-            ["d", this.segments.join(" ")],
-        ]);
+        super.setAttributes([["d", this.segments.join(" ")]]);
         return super.toString();
     }
 }

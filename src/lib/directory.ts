@@ -76,7 +76,7 @@ export namespace directory {
     /**
      * ensure that the path directory is created
      * throws if the path is not a directory or was not created
-     * @param path - path of the directory to create 
+     * @param path - path of the directory to create
      * @public
      */
     export function create(path: string): void {

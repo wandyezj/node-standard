@@ -6,5 +6,7 @@ import { lineSplit } from "./lineSplit";
  * @public
  */
 export function trimEndAllLines(string: string) {
-    return lineSplit(string).map((line) => line.trimEnd()).join("\n");
+    return lineSplit(string)
+        .map((line) => line.trimEnd())
+        .join("\n");
 }
