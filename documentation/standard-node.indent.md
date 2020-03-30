@@ -9,17 +9,19 @@ indent all lines with the specified level of indent.
 <b>Signature:</b>
 
 ```typescript
-export declare function indent(string: string, indent?: Partial<Indent>): string;
+export declare function indent(string: string, indent?: Partial<IndentOptions>): string;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  string | <code>string</code> |  |
-|  indent | <code>Partial&lt;Indent&gt;</code> |  |
+|  string | <code>string</code> | string to indent |
+|  indent | <code>Partial&lt;IndentOptions&gt;</code> | indent options |
 
 <b>Returns:</b>
 
 `string`
+
+a version of the string indented according to the indent options
 

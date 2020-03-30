@@ -18,8 +18,8 @@ function equivalent(pathA: string, pathB: string): boolean;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  pathA | <code>string</code> |  |
-|  pathB | <code>string</code> |  |
+|  pathA | <code>string</code> | folder to compare |
+|  pathB | <code>string</code> | folder to compare |
 
 <b>Returns:</b>
 

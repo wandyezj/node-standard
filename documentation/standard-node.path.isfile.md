@@ -16,7 +16,7 @@ function isFile(path: string): boolean;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path to test |
 
 <b>Returns:</b>
 

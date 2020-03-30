@@ -16,7 +16,7 @@ function write(path: string, string: string): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | file path |
 |  string | <code>string</code> |  |
 
 <b>Returns:</b>

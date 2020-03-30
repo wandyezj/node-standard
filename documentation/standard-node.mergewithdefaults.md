@@ -16,8 +16,8 @@ export declare function mergeWithDefaults<T extends object>(original: Partial<T>
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  original | <code>Partial&lt;T&gt;</code> |  |
-|  defaults | <code>T</code> |  |
+|  original | <code>Partial&lt;T&gt;</code> | original object |
+|  defaults | <code>T</code> | default object |
 
 <b>Returns:</b>
 

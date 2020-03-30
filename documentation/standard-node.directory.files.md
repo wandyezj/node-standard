@@ -16,7 +16,7 @@ function files(path: string): string[];
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path of directory |
 
 <b>Returns:</b>
 

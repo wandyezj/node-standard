@@ -16,7 +16,7 @@ function read(path: string): string;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path of the file to read |
 
 <b>Returns:</b>
 

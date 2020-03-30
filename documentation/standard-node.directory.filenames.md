@@ -16,7 +16,7 @@ function fileNames(path: string): string[];
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path of the directory to get the files in |
 
 <b>Returns:</b>
 

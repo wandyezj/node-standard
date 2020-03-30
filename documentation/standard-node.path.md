@@ -4,6 +4,8 @@
 
 ## path namespace
 
+contains path manipulation functions
+
 <b>Signature:</b>
 
 ```typescript

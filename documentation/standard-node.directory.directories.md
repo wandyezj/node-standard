@@ -4,6 +4,8 @@
 
 ## directory.directories() function
 
+get the names of the directories in a directory
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,7 +16,7 @@ function directories(path: string): string[];
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path to get the directories from |
 
 <b>Returns:</b>
 

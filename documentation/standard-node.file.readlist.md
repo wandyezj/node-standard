@@ -16,7 +16,7 @@ function readList(path: string): string[];
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path to read the file from |
 
 <b>Returns:</b>
 

@@ -16,8 +16,8 @@ function writeJson(path: string, object: object): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
-|  object | <code>object</code> |  |
+|  path | <code>string</code> | path to write the file to |
+|  object | <code>object</code> | object to transform to JSON and write |
 
 <b>Returns:</b>
 

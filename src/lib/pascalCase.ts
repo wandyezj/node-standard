@@ -5,7 +5,8 @@ import { capitalize } from "./capitalize";
 /**
  * PascalCase
  * splits on spaces and capitalizes words in between
- * @param string 
+ * @param string - string to pascalCase
+ * @public
  */
 export function pascalCase(string: string): string {
     string = joinWords(string)

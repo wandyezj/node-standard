@@ -16,9 +16,9 @@ export declare function isNumberInRange(n: number, minimum: number, maximum: num
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  n | <code>number</code> |  |
-|  minimum | <code>number</code> |  |
-|  maximum | <code>number</code> |  |
+|  n | <code>number</code> | number to test |
+|  minimum | <code>number</code> | minimum that n can be |
+|  maximum | <code>number</code> | maximum that n can be |
 
 <b>Returns:</b>
 

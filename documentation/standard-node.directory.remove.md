@@ -16,7 +16,7 @@ function remove(path: string): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path to remove |
 
 <b>Returns:</b>
 

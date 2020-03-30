@@ -16,8 +16,8 @@ function writeCsv(path: string, values: readonly string[][]): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
-|  values | <code>readonly string[][]</code> |  |
+|  path | <code>string</code> | path to write to |
+|  values | <code>readonly string[][]</code> | values to write |
 
 <b>Returns:</b>
 

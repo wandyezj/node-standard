@@ -16,8 +16,8 @@ function recurse(path: string, options: RecurseOptions): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
-|  options | <code>RecurseOptions</code> |  |
+|  path | <code>string</code> | directory to start in |
+|  options | <code>RecurseOptions</code> | recurse options |
 
 <b>Returns:</b>
 

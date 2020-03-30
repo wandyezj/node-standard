@@ -4,7 +4,7 @@
 
 ## directory.create() function
 
-ensure that the path directory is created
+ensure that the path directory is created throws if the path is not a directory or was not created
 
 <b>Signature:</b>
 
@@ -16,13 +16,9 @@ function create(path: string): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path of the directory to create |
 
 <b>Returns:</b>
 
 `void`
-
-## Exceptions
-
-if the path is not a directory or was not created
 

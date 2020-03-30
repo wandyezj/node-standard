@@ -16,7 +16,7 @@ function writeListUnique(path: string, list: readonly string[]): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path to write the list file to |
 |  list | <code>readonly string[]</code> |  |
 
 <b>Returns:</b>

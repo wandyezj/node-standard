@@ -16,8 +16,8 @@ function writeList(path: string, list: readonly string[]): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
-|  list | <code>readonly string[]</code> |  |
+|  path | <code>string</code> | path to write the file to |
+|  list | <code>readonly string[]</code> | string list to write to the file |
 
 <b>Returns:</b>
 

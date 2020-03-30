@@ -16,7 +16,7 @@ export declare function trimEndAllLines(string: string): string;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  string | <code>string</code> |  |
+|  string | <code>string</code> | string to trim all end lines from |
 
 <b>Returns:</b>
 

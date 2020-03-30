@@ -4,21 +4,42 @@ import {path} from "./lib/path";
 import {directory} from "./lib/directory";
 import {file} from "./lib/file";
 
+// Numbers
 import {isNumberInRange} from "./lib/isNumberInRange";
 import {isWholeNumber} from "./lib/isWholeNumber";
+
+// Strings
 import {trimEndAllLines} from "./lib/trimEndAllLines";
-import {indent} from "./lib/indent";
+import {indent, IndentOptions} from "./lib/indent";
+import {asciiLowercase} from "./lib/asciiLowercase";
+import {asciiUppercase} from "./lib/asciiUppercase";
+import {asciiLetters} from "./lib/asciiLetters";
+import {digits} from "./lib/digits";
+
+// Objects
 import {mergeWithDefaults} from "./lib/mergeWithDefaults"
+
+
 
 export {
     path,
     directory,
     file,
+    // Numbers
     isNumberInRange,
     isWholeNumber,
+
+    // Strings
     trimEndAllLines,
     indent,
-    mergeWithDefaults
+    IndentOptions,
+    asciiLetters,
+    asciiLowercase,
+    asciiUppercase,
+    digits,
+
+    // Objects
+    mergeWithDefaults,
 };
 
 

@@ -18,7 +18,7 @@ function readJson<T>(path: string): T;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path to the JSON file |
 
 <b>Returns:</b>
 

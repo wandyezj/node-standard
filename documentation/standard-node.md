@@ -10,15 +10,30 @@
 |  --- | --- |
 |  [indent(string, indent)](./standard-node.indent.md) | indent all lines with the specified level of indent. |
 |  [isNumberInRange(n, minimum, maximum)](./standard-node.isnumberinrange.md) | n is in range \[minimum, maximum\] range is inclusive |
-|  [isWholeNumber(n)](./standard-node.iswholenumber.md) | Is the number a natural number including zero? {<!-- -->0, 1, 2, ...<!-- -->} ℕ ∪ {<!-- -->0<!-- -->} |
+|  [isWholeNumber(n)](./standard-node.iswholenumber.md) | Is the number a natural number including zero? |
 |  [mergeWithDefaults(original, defaults)](./standard-node.mergewithdefaults.md) | create a new object that ensure all default properties are present |
 |  [trimEndAllLines(string)](./standard-node.trimendalllines.md) | remove whitespace from the end of all lines |
+
+## Interfaces
+
+|  Interface | Description |
+|  --- | --- |
+|  [IndentOptions](./standard-node.indentoptions.md) | describe a single level of indent |
 
 ## Namespaces
 
 |  Namespace | Description |
 |  --- | --- |
-|  [directory](./standard-node.directory.md) |  |
-|  [file](./standard-node.file.md) |  |
-|  [path](./standard-node.path.md) |  |
+|  [directory](./standard-node.directory.md) | contains directory manipulation functions |
+|  [file](./standard-node.file.md) | contains file manipulation functions |
+|  [path](./standard-node.path.md) | contains path manipulation functions |
+
+## Variables
+
+|  Variable | Description |
+|  --- | --- |
+|  [asciiLetters](./standard-node.asciiletters.md) | \[a-z\]\[A-Z\] |
+|  [asciiLowercase](./standard-node.asciilowercase.md) | \[a-z\] |
+|  [asciiUppercase](./standard-node.asciiuppercase.md) | \[A-Z\] |
+|  [digits](./standard-node.digits.md) | \[0-9\] |
 

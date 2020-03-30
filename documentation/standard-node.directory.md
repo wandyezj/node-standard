@@ -4,6 +4,8 @@
 
 ## directory namespace
 
+contains directory manipulation functions
+
 <b>Signature:</b>
 
 ```typescript
@@ -15,11 +17,11 @@ export declare namespace directory
 |  Function | Description |
 |  --- | --- |
 |  [clear(path)](./standard-node.directory.clear.md) | delete the directory and recreate it to ensure it is free of items note: can only handle directories that only contain files and directories |
-|  [create(path)](./standard-node.directory.create.md) | ensure that the path directory is created |
-|  [directories(path)](./standard-node.directory.directories.md) |  |
+|  [create(path)](./standard-node.directory.create.md) | ensure that the path directory is created throws if the path is not a directory or was not created |
+|  [directories(path)](./standard-node.directory.directories.md) | get the names of the directories in a directory |
 |  [directoryNames(path)](./standard-node.directory.directorynames.md) | get subdirectory names that exist in the provided directory path |
 |  [equivalent(pathA, pathB)](./standard-node.directory.equivalent.md) | Checks recursively that the contents of folderA are exactly equivalent to folderB<!-- -->Checks that all the same files exist and the file contents are the same. |
-|  [exists(path)](./standard-node.directory.exists.md) | does a file exist at the path? note: returns false if a directory exists at the path |
+|  [exists(path)](./standard-node.directory.exists.md) | does a directory exist at the path? note: returns false if a directory exists at the path |
 |  [fileNames(path)](./standard-node.directory.filenames.md) | retrieves the file names present in the directory |
 |  [files(path)](./standard-node.directory.files.md) | get all paths to files present in the directory |
 |  [recurse(path, options)](./standard-node.directory.recurse.md) | calls functions over files and directories calls the onDirectory function for the directory, then it's files, then all subdirectories and so on goes through files then directories in alphabetical order |

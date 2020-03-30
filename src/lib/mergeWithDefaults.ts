@@ -1,7 +1,8 @@
 /**
  * create a new object that ensure all default properties are present
- * @param original 
- * @param defaults 
+ * @param original - original object
+ * @param defaults - default object
+ * @public
  */
 export function mergeWithDefaults<T extends object>(original: Partial<T>, defaults: T): T {
 

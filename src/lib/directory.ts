@@ -5,10 +5,14 @@ import * as nodePath from "path";
 import * as standard from "../index";
 import { listsEquivalent } from "./listsEquivalent";
 
+/**
+ * contains directory manipulation functions
+ * @public
+ */
 export namespace directory {
     /**
      * get subdirectory names that exist in the provided directory path
-     * @param path path of the directory to get the sub directories of
+     * @param path - path of the directory to get the sub directories of
      * @returns directory names
      */
     export function directoryNames(path: string): string[] {
@@ -20,6 +24,11 @@ export namespace directory {
         return directories.sort();
     }
 
+    /**
+     * get the names of the directories in a directory
+     * @param path - path to get the directories from
+     * @public
+     */
     export function directories(path: string): string[] {
         const names = directoryNames(path);
         const paths = names.map((name: string) => nodePath.join(path, name));
@@ -28,8 +37,9 @@ export namespace directory {
 
     /**
      * retrieves the file names present in the directory
-     * @param path path of the directory to get the files in
+     * @param path - path of the directory to get the files in
      * @returns list of file names in the directory
+     * @public
      */
     export function fileNames(path: string): string[] {
         const all = fs.readdirSync(path);
@@ -42,8 +52,9 @@ export namespace directory {
 
     /**
      * get all paths to files present in the directory
-     * @param path path of directory
+     * @param path - path of directory
      * @returns list of all paths to files in the directory
+     * @public
      */
     export function files(path: string): string[] {
         const names = fileNames(path);
@@ -52,10 +63,11 @@ export namespace directory {
     }
 
     /**
-     * does a file exist at the path?
+     * does a directory exist at the path?
      * note: returns false if a directory exists at the path
-     * @param path
+     * @param path - path of directory
      * @returns true when the path is a directory
+     * @public
      */
     export function exists(path: string): boolean {
         return fs.existsSync(path) && standard.path.isDirectory(path);
@@ -63,8 +75,9 @@ export namespace directory {
 
     /**
      * ensure that the path directory is created
-     * @param path
-     * @throws if the path is not a directory or was not created
+     * throws if the path is not a directory or was not created
+     * @param path - path of the directory to create 
+     * @public
      */
     export function create(path: string): void {
         if (standard.directory.exists(path)) {
@@ -86,7 +99,8 @@ export namespace directory {
     /**
      * ensures that a directory only filled with files and directories is removed
      * recursively removes all files and subdirectories as well as the root directory
-     * @param path
+     * @param path - path to remove
+     * @public
      */
     export function remove(path: string): void {
         if (!exists(path)) {
@@ -112,7 +126,8 @@ export namespace directory {
     /**
      * delete the directory and recreate it to ensure it is free of items
      * note: can only handle directories that only contain files and directories
-     * @param path
+     * @param path - path to remove contents from
+     * @public
      */
     export function clear(path: string): void {
         standard.directory.remove(path);
@@ -145,8 +160,9 @@ export namespace directory {
      * calls functions over files and directories
      * calls the onDirectory function for the directory, then it's files, then all subdirectories and so on
      * goes through files then directories in alphabetical order
-     * @param path directory to start in
-     * @param options
+     * @param path - directory to start in
+     * @param options - recurse options
+     * @public
      */
     export function recurse(path: string, options: RecurseOptions): void {
         if (!standard.directory.exists(path)) {
@@ -179,8 +195,9 @@ export namespace directory {
 
     /**
      * gets subdirectory paths relative to the root
-     * @param rootPath
+     * @param rootPath - starting directory
      * @returns all relative sub directory names
+     * @public
      */
     function getAllSubDirectoriesRecursive(rootPath: string): string[] {
         const directories: string[] = [];
@@ -201,9 +218,10 @@ export namespace directory {
      *
      * Checks that all the same files exist and the file contents are the same.
      *
-     * @param pathA folder to compare
-     * @param pathB folder to compare
+     * @param pathA - folder to compare
+     * @param pathB - folder to compare
      * @returns true if folders contain the exact same subfolders and files and the files contents are the same.
+     * @public
      */
     export function equivalent(pathA: string, pathB: string): boolean {
         if (!fs.existsSync(pathA)) {
@@ -248,6 +266,12 @@ export namespace directory {
         return true;
     }
 
+    /**
+     * checks that two directories contain equivalent contents
+     * @param folderA - directory path
+     * @param folderB - directory path
+     * @public
+     */
     function directoryFilesEqual(folderA: string, folderB: string): boolean {
         const fileNamesA = fileNames(folderA);
         const fileNamesB = fileNames(folderB);
@@ -273,6 +297,13 @@ export namespace directory {
         return true;
     }
 
+    /**
+     * checks that two file lists are equivalent
+     * have the same files and the files have the same contents
+     * @param a - list of file paths
+     * @param b - list of file paths
+     * @public
+     */
     function fileListsEqual(a: string[], b: string[]): boolean {
         // Check that the files are actually equal
         for (let i = 0; i < a.length; i++) {

@@ -4,6 +4,8 @@
 
 ## file namespace
 
+contains file manipulation functions
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,10 +16,10 @@ export declare namespace file
 
 |  Function | Description |
 |  --- | --- |
-|  [equivalent(pathA, pathB)](./standard-node.file.equivalent.md) |  |
+|  [equivalent(pathA, pathB)](./standard-node.file.equivalent.md) | checks if two files are equivalent |
 |  [exists(path)](./standard-node.file.exists.md) | does a file exist at the path? note: returns false if the path exists but it is not a file |
 |  [read(path)](./standard-node.file.read.md) | Read utf-8 file and transform to standard new lines. |
-|  [readCsv(path)](./standard-node.file.readcsv.md) | Reads a CSV file splits each line on commas |
+|  [readCsv(path)](./standard-node.file.readcsv.md) | Reads a CSV file (does not handle complex CSVs, only splits on <code>,</code>) splits each line on commas |
 |  [readJson(path)](./standard-node.file.readjson.md) | Read a file that contains JSON and turn it into an object<!-- -->Note: no validation is done on the data. TODO: add validation of JSON to ensure it conforms to schema to type. |
 |  [readLines(path)](./standard-node.file.readlines.md) | Read utf-8 file and transform to standard new lines. |
 |  [readList(path)](./standard-node.file.readlist.md) | reads lines from a file and removes the ones that are whitespace. |

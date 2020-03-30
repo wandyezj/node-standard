@@ -4,7 +4,7 @@
 
 ## file.readCsv() function
 
-Reads a CSV file splits each line on commas
+Reads a CSV file (does not handle complex CSVs, only splits on `,`<!-- -->) splits each line on commas
 
 <b>Signature:</b>
 
@@ -16,7 +16,7 @@ function readCsv(path: string): string[][];
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | file to read |
 
 <b>Returns:</b>
 

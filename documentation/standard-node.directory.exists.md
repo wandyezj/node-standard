@@ -4,7 +4,7 @@
 
 ## directory.exists() function
 
-does a file exist at the path? note: returns false if a directory exists at the path
+does a directory exist at the path? note: returns false if a directory exists at the path
 
 <b>Signature:</b>
 
@@ -16,7 +16,7 @@ function exists(path: string): boolean;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path of directory |
 
 <b>Returns:</b>
 

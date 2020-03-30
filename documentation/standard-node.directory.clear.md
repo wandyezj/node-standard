@@ -16,7 +16,7 @@ function clear(path: string): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
+|  path | <code>string</code> | path to remove contents from |
 
 <b>Returns:</b>
 

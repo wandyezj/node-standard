@@ -4,6 +4,8 @@
 
 ## file.equivalent() function
 
+checks if two files are equivalent
+
 <b>Signature:</b>
 
 ```typescript
@@ -14,8 +16,8 @@ function equivalent(pathA: string, pathB: string): boolean;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  pathA | <code>string</code> |  |
-|  pathB | <code>string</code> |  |
+|  pathA | <code>string</code> | path of a file |
+|  pathB | <code>string</code> | path of a file |
 
 <b>Returns:</b>
 

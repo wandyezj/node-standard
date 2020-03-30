@@ -16,8 +16,8 @@ function writeLines(path: string, lines: string[]): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  path | <code>string</code> |  |
-|  lines | <code>string[]</code> |  |
+|  path | <code>string</code> | file path |
+|  lines | <code>string[]</code> | lines to write |
 
 <b>Returns:</b>
 

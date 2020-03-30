@@ -7,10 +7,15 @@ import { standardizeNewlines } from "./standardizeNewlines";
 import { listWithoutDuplicateElements } from "./listWithoutDuplicateElements";
 import { lineSplit } from "./lineSplit";
 
+/**
+ * contains file manipulation functions
+ * @public
+ */
 export namespace file {
     /**
      * Read utf-8 file and transform to standard new lines.
-     * @param path
+     * @param path - path of the file to read
+     * @public
      */
     export function read(path: string): string {
         let string: string = fs.readFileSync(path, "utf-8");
@@ -27,8 +32,9 @@ export namespace file {
 
     /**
      * write data to path with standard newlines.
-     * @param path file path
-     * @param data
+     * @param path - file path
+     * @param data - string data to write
+     * @public
      */
     export function write(path: string, string: string): void {
         const clean = standardizeNewlines(string);
@@ -37,7 +43,8 @@ export namespace file {
 
     /**
      * Read utf-8 file and transform to standard new lines.
-     * @param path file path
+     * @param path - file path
+     * @public
      */
     export function readLines(path: string): string[] {
         return read(path).split("\n");
@@ -45,8 +52,9 @@ export namespace file {
 
     /**
      * Read utf-8 file and transform to standard new lines.
-     * @param path file path
-     * @param lines
+     * @param path - file path
+     * @param lines - lines to write
+     * @public
      */
     export function writeLines(path: string, lines: string[]) {
         const string: string = lines.join("\n");
@@ -59,7 +67,8 @@ export namespace file {
      * Note: no validation is done on the data.
      * TODO: add validation of JSON to ensure it conforms to schema to type.
      *
-     * @param path path to the JSON file
+     * @param path - path to the JSON file
+     * @public
      */
     export function readJson<T>(path: string): T {
         const data: string = read(path);
@@ -69,8 +78,9 @@ export namespace file {
 
     /**
      * Transform a data object to a string and write it to the specified path.
-     * @param path
-     * @param object
+     * @param path - path to write the file to
+     * @param object - object to transform to JSON and write
+     * @public
      */
     export function writeJson(path: string, object: object): void {
         const json: string = JSON.stringify(object, undefined, 2);
@@ -79,7 +89,8 @@ export namespace file {
 
     /**
      * reads lines from a file and removes the ones that are whitespace.
-     * @param path
+     * @param path - path to read the file from
+     * @public
      */
     export function readList(path: string): string[] {
         const data: string = read(path);
@@ -88,8 +99,9 @@ export namespace file {
 
     /**
      * write a list to a file
-     * @param path
-     * @param data
+     * @param path - path to write the file to
+     * @param list - string list to write to the file
+     * @public
      */
     export function writeList(path: string, list: readonly string[]): void {
         const joined: string = list.join("\n");
@@ -99,8 +111,9 @@ export namespace file {
     /**
      * Removes all duplicates from the list before writing it.
      *
-     * @param path path to write the list file to
-     * @param data list of paths to write
+     * @param path - path to write the list file to
+     * @param data - list of paths to write
+     * @public
      */
     export function writeListUnique(
         path: string,
@@ -111,9 +124,10 @@ export namespace file {
     }
 
     /**
-     * Reads a CSV file
+     * Reads a CSV file (does not handle complex CSVs, only splits on `,`)
      * splits each line on commas
-     * @param path
+     * @param path - file to read
+     * @public
      */
     export function readCsv(path: string): string[][] {
         const lines = readList(path);
@@ -128,8 +142,9 @@ export namespace file {
     /**
      * Writes a CSV file
      * Joins all lists on comma and writes the lines.
-     * @param path
-     * @param values
+     * @param path - path to write to
+     * @param values - values to write
+     * @public
      */
     export function writeCsv(path: string, values: readonly string[][]) {
         const lines = values.map((line) => line.join(","));
@@ -139,8 +154,9 @@ export namespace file {
     /**
      * does a file exist at the path?
      * note: returns false if the path exists but it is not a file
-     * @param path
+     * @param path - path to check if exists
      * @returns true when the path is a file
+     * @public
      */
     export function exists(path: string): boolean {
         return fs.existsSync(path) && standardPath.isFile(path);
@@ -151,9 +167,10 @@ export namespace file {
     }
 
     /**
-     *
-     * @param pathA
-     * @param pathB
+     * checks if two files are equivalent
+     * @param pathA - path of a file
+     * @param pathB - path of a file
+     * @public
      */
     export function equivalent(pathA: string, pathB: string): boolean {
         if (fs.lstatSync(pathA).size !== fs.lstatSync(pathB).size) {

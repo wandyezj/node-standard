@@ -4,7 +4,7 @@
 
 ## isWholeNumber() function
 
-Is the number a natural number including zero? {<!-- -->0, 1, 2, ...<!-- -->} ℕ ∪ {<!-- -->0<!-- -->}
+Is the number a natural number including zero?
 
 <b>Signature:</b>
 
@@ -16,9 +16,13 @@ export declare function isWholeNumber(n: number): boolean;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  n | <code>number</code> |  |
+|  n | <code>number</code> | number to test |
 
 <b>Returns:</b>
 
 `boolean`
+
+## Remarks
+
+`ℕ ∪ {0\}  = {0, 1, 2, ...\}`
 
