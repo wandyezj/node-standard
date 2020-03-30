@@ -25,8 +25,8 @@ export function mdToHtml(text: string): string {
 
 
 function createHtmlWithBody(body: string): string {
-    const indentedBody = standard.string.trimEndAllLines(
-        standard.string.indent(body, {
+    const indentedBody = standard.trimEndAllLines(
+        standard.indent(body, {
             level: 2,
         }));
 

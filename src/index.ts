@@ -1,13 +1,37 @@
 // standard set of functions for doing basic things.
 
-import * as list from "./lib/list";
-import * as string from "./lib/string";
-import * as object from "./lib/object";
-import * as number from "./lib/number";
-import * as parameter from "./lib/parameter";
-import * as path from "./lib/path";
-import * as file from "./lib/file";
-import * as directory from "./lib/directory";
-import * as math from "./lib/math";
+import {path} from "./lib/path";
+import {directory} from "./lib/directory";
+import {file} from "./lib/file";
 
-export { list, string, object, parameter, number, path, file, directory, math };
+import {isNumberInRange} from "./lib/isNumberInRange";
+import {isWholeNumber} from "./lib/isWholeNumber";
+import {trimEndAllLines} from "./lib/trimEndAllLines";
+import {indent} from "./lib/indent";
+
+export {
+    path,
+    directory,
+    file,
+    isNumberInRange,
+    isWholeNumber,
+    trimEndAllLines,
+    indent
+};
+
+
+// import * as list from "./lib/list";
+// import * as string from "./lib/string";
+// import * as object from "./lib/object";
+// import * as number from "./lib/isPositiveNumber";
+// import * as parameter from "./lib/assertParameter";
+// import * as path from "./lib/path";
+// import * as file from "./lib/file";
+// import * as directory from "./lib/directory";
+// import * as math from "./lib/degreesToRadians";
+
+// export { list, string, object, parameter, number, path, file, directory, math };
+
+// import {removeDuplicates, removeEmpty, equivalent} from "./lib/list";
+
+// export {removeDuplicates, removeEmpty, equivalent}

@@ -54,3 +54,8 @@ In some cases complete is not possible due to the way that dependency APIs such 
 Short descriptive memorable names are preferred over longer names.
 
 The same words should be used for the same action, patterns should be applicable as far as possible.
+
+
+## Thoughts
+
+Would it make sense to have the entire library be functional where ever possible and to only have a single top level namespace?

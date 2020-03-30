@@ -2,6 +2,7 @@ import { PathAttributes } from "./PathAttributes";
 import { Path } from "./Path";
 import { CoordinateLocation } from "./PathCoordinate";
 import * as standard from "../../index";
+import { degreesToRadians } from "../degreesToRadians";
 
 // import { Path } from "./Path";
 // import { Shape, ShapeOptions } from ".";
@@ -82,7 +83,7 @@ export class PenPath extends Path implements Pen {
     private angleDegrees: number = 0;
 
     private get angleRadians(): number {
-        return standard.math.degreesToRadians(this.angleDegrees - 90 * 3);
+        return degreesToRadians(this.angleDegrees - 90 * 3);
     }
 
     constructor(attributes: PenAttributes) {
