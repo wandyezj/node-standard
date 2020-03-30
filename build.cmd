@@ -1,5 +1,8 @@
 cls
 
+call npm run prettier
+if %errorlevel% neq 0 goto :error
+
 call npm run build
 if %errorlevel% neq 0 goto :error
 
