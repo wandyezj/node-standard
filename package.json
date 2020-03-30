@@ -14,8 +14,11 @@
     "manual": "./node_modules/.bin/ts-node ./test/manual.ts",
     "clean": "if exist dist (rmdir /s /q dist)",
     "build": "./node_modules/.bin/tsc",
-    "api-extractor": "./node_modules/.bin/api-extractor run",
-    "api-documenter":"./node_modules/.bin/api-documenter markdown --input-folder temp --output-folder documentation"
+    "api-extractor": "./node_modules/.bin/api-extractor",
+    "api-extractor-run": "./node_modules/.bin/api-extractor run",
+    "api-documenter":"./node_modules/.bin/api-documenter",
+    "api-documenter-run":"node_modules/.bin/api-documenter markdown --input-folder temp --output-folder documentation"
+
   },
   "repository": {
     "type": "git",

@@ -3,7 +3,7 @@ import * as standard from "../index";
 
 test('lineSplit', async () => {
     const expected = ['a','','b'];
-    const actual = standard.string.lineSplit(`a
+    const actual = standard.lineSplit(`a
 
 b`);
     // console.log(expected);

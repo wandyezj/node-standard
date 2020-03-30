@@ -1,4 +1,4 @@
-import { assertParameterIsWholeNumberInRange } from "../assertParameterIsWholeNumberInRange";
+import { assertParameterIsNaturalNumberInRange } from "../assertParameterIsNaturalNumberInRange";
 
 export class Document {
     private elements: Element[] = [];
@@ -49,7 +49,7 @@ class Heading implements Element, HeadingProperties {
     }
 
     public set level(value: number) {
-        assertParameterIsWholeNumberInRange("level", value, 1, 6);
+        assertParameterIsNaturalNumberInRange("level", value, 1, 6);
         this._level = value;
     }
 

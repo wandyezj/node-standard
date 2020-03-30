@@ -1,4 +1,4 @@
-import * as document from "../../src/lib/document";
+import * as document from "../../src/lib/markdown/document";
 // import * as standard from "../index";
 
 test('md', async () => {

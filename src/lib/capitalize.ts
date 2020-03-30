@@ -1,8 +1,9 @@
 /**
  * uppercases the first character in a string.
  * in the case that the first character in the string can not be upper cased (for example a white space character or an empty string) the string is unmodified.
- * @param string
+ * @param string - string to capitalize
  * @returns the string with it's first character upper cased.
+ * @public
  */
 export function capitalize(string: string): string {
     if (string.length === 0) {

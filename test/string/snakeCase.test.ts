@@ -24,7 +24,7 @@ cases.forEach((c: Case) => {
 });
 
 function run(input: string, expected: string) {
-    const actual = standard.string.snakeCase(input);
+    const actual = standard.snakeCase(input);
 
     // console.log(expected);
     // console.log(actual);

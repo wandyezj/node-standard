@@ -9,7 +9,7 @@ Is the number a natural number including zero?
 <b>Signature:</b>
 
 ```typescript
-export declare function isWholeNumber(n: number): boolean;
+export declare function isNaturalNumber(n: number): boolean;
 ```
 
 ## Parameters
@@ -24,5 +24,5 @@ export declare function isWholeNumber(n: number): boolean;
 
 ## Remarks
 
-`ℕ ∪ {0\}  = {0, 1, 2, ...\}`
+`n ∈ ℕ₀ = n is an element of {0, 1, 2, ...\}`
 

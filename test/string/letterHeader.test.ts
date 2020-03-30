@@ -14,7 +14,7 @@ const cases: Case<number, string>[]  = [
 ];
 
 const run: runCase<number, string> = (input: number, expected: string) => {
-    const actual = standard.string.letterHeader(input);
+    const actual = standard.letterHeader(input);
     expect(actual).toBe(expected);
 }
 

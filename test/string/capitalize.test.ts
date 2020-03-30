@@ -22,7 +22,7 @@ cases.forEach((c: Case) => {
 });
 
 function run(input: string, expected: string) {
-    const actual = standard.string.capitalize(input);
+    const actual = standard.capitalize(input);
 
     // console.log(expected);
     // console.log(actual);

@@ -1,19 +1,18 @@
-import { isWholeNumber } from "./isWholeNumber";
 import { asciiUppercase } from "./asciiUppercase";
+import { assertParameterIsNaturalNumber } from "./assertParameterIsNaturalNumber";
 
 /**
  * convert a number to a letter header
- * 0 -> A
- * 1 -> B
- * 26 -> BA
- * 27 -> BB
+ * `0 -> A`
+ * `1 -> B`
+ * `26 -> BA`
+ * `27 -> BB`
  * etc..
- * @param n
+ * @param n - natural number to convert to letter header
+ * @public
  */
 export function letterHeader(n: number) {
-    if (isWholeNumber(n)) {
-        throw "passed non whole number";
-    }
+    assertParameterIsNaturalNumber("n", n);
 
     // modulo 26
     let current = n;

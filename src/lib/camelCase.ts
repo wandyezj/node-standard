@@ -1,5 +1,5 @@
-import { joinWords } from "./joinWords";
 import { decapitalize } from "./decapitalize";
+import { pascalCase } from "./pascalCase";
 
 /**
  * camelCase
@@ -9,6 +9,6 @@ import { decapitalize } from "./decapitalize";
  * @public
  */
 export function camelCase(string: string): string {
-    string = joinWords(string);
+    string = pascalCase(string);
     return decapitalize(string);
 }

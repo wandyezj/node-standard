@@ -8,10 +8,17 @@
 
 |  Function | Description |
 |  --- | --- |
+|  [assertParameterIsNaturalNumber(variable, n)](./standard-node.assertparameterisnaturalnumber.md) | throws if the parameter is not a natural number |
+|  [assertParameterIsNaturalNumberInRange(variable, n, minimum, maximum)](./standard-node.assertparameterisnaturalnumberinrange.md) | throws if the variable is not a natural number in the expected range |
 |  [camelCase(string)](./standard-node.camelcase.md) | camelCase splits on spaces and capitalizes words in between |
+|  [capitalize(string)](./standard-node.capitalize.md) | uppercases the first character in a string. in the case that the first character in the string can not be upper cased (for example a white space character or an empty string) the string is unmodified. |
+|  [decapitalize(string)](./standard-node.decapitalize.md) | decapitalize a string |
 |  [indent(string, indent)](./standard-node.indent.md) | indent all lines with the specified level of indent. |
+|  [insertTabs(string, count)](./standard-node.inserttabs.md) | inserts tabs in front of every line in s |
 |  [isNumberInRange(n, minimum, maximum)](./standard-node.isnumberinrange.md) | n is in range \[minimum, maximum\] range is inclusive |
 |  [isWholeNumber(n)](./standard-node.iswholenumber.md) | Is the number a natural number including zero? |
+|  [letterHeader(n)](./standard-node.letterheader.md) | convert a number to a letter header <code>0 -&gt; A</code> <code>1 -&gt; B</code> <code>26 -&gt; BA</code> <code>27 -&gt; BB</code> etc.. |
+|  [lineSplit(string)](./standard-node.linesplit.md) | split a string into a list of lines |
 |  [listsEquivalent(a, b)](./standard-node.listsequivalent.md) | checks if two lists have the same values in the same order using the default comparison operator. |
 |  [listWithoutDuplicateElements(original)](./standard-node.listwithoutduplicateelements.md) | creates list without duplicates from an original list, comparing using the default comparison operator, keeping only the first occurrence. |
 |  [listWithoutWhitespaceElements(original)](./standard-node.listwithoutwhitespaceelements.md) | trims all strings and removes all strings that are pure whitespace from the list. |
