@@ -1,4 +1,4 @@
-import * as standard from "../index";
+import { assertParameterIsWholeNumberInRange } from "./assertParameterIsWholeNumberInRange";
 
 export class Document {
 
@@ -51,7 +51,7 @@ class Heading implements Element, HeadingProperties {
     }
 
     public set level(value: number) {
-        standard.parameter.isWholeInRange("level", value, 1, 6);
+        assertParameterIsWholeNumberInRange("level", value, 1, 6);
         this._level = value;
     }
 

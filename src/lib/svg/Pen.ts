@@ -1,7 +1,6 @@
 import { PathAttributes } from "./PathAttributes";
 import { Path } from "./Path";
 import { CoordinateLocation } from "./PathCoordinate";
-import * as standard from "../../index";
 import { degreesToRadians } from "../degreesToRadians";
 
 // import { Path } from "./Path";

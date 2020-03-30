@@ -8,7 +8,17 @@
 
 |  Function | Description |
 |  --- | --- |
-|  [equivalent(a, b)](./standard-node.equivalent.md) | checks if two lists have the same values in the same order using the default comparison operator. |
-|  [removeDuplicates(original)](./standard-node.removeduplicates.md) | creates list without duplicates from an original list, comparing using the default comparison operator, keeping only the first occurrence. |
-|  [removeEmpty(original)](./standard-node.removeempty.md) | trims all strings and removes all strings that are pure whitespace from the list. |
+|  [indent(string, indent)](./standard-node.indent.md) | indent all lines with the specified level of indent. |
+|  [isNumberInRange(n, minimum, maximum)](./standard-node.isnumberinrange.md) | n is in range \[minimum, maximum\] range is inclusive |
+|  [isWholeNumber(n)](./standard-node.iswholenumber.md) | Is the number a natural number including zero? {<!-- -->0, 1, 2, ...<!-- -->} ℕ ∪ {<!-- -->0<!-- -->} |
+|  [mergeWithDefaults(original, defaults)](./standard-node.mergewithdefaults.md) | create a new object that ensure all default properties are present |
+|  [trimEndAllLines(string)](./standard-node.trimendalllines.md) | remove whitespace from the end of all lines |
+
+## Namespaces
+
+|  Namespace | Description |
+|  --- | --- |
+|  [directory](./standard-node.directory.md) |  |
+|  [file](./standard-node.file.md) |  |
+|  [path](./standard-node.path.md) |  |
 

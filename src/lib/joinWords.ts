@@ -1,3 +1,4 @@
+import { capitalize } from "./capitalize";
 
 /**
  * splits on whitespaces and -, capitalizes words, and joins them

@@ -1,4 +1,5 @@
 import { lineSplit } from "./lineSplit";
+import { mergeWithDefaults } from "./mergeWithDefaults";
 
 /**
  * describe a single level of indent
@@ -36,7 +37,7 @@ const defaultIndent: Indent = {
  */
 export function indent(string: string, indent: Partial<Indent> = defaultIndent): string {
 
-    const settings: Indent = standard.object.mergeWithDefaults(indent, defaultIndent);
+    const settings: Indent = mergeWithDefaults(indent, defaultIndent);
 
     const indentString = settings.value.repeat(settings.count).repeat(settings.level);
 

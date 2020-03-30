@@ -8,6 +8,7 @@ import {isNumberInRange} from "./lib/isNumberInRange";
 import {isWholeNumber} from "./lib/isWholeNumber";
 import {trimEndAllLines} from "./lib/trimEndAllLines";
 import {indent} from "./lib/indent";
+import {mergeWithDefaults} from "./lib/mergeWithDefaults"
 
 export {
     path,
@@ -16,7 +17,8 @@ export {
     isNumberInRange,
     isWholeNumber,
     trimEndAllLines,
-    indent
+    indent,
+    mergeWithDefaults
 };
 
 
