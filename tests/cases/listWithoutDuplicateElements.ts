@@ -1,6 +1,6 @@
 import * as standard from "../index";
 
-test('removeDuplicates', async () => {
+test('listWithoutDuplicateElements', async () => {
     const expected = ['a', 'b', 'c'];
     const actual = standard.listWithoutDuplicateElements(['a', 'a', 'b', 'b', 'a', 'c', 'b', 'a']);
     // console.log(expected);

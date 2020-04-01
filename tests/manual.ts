@@ -1,7 +1,7 @@
 import * as standard from "./index"
 import * as path from 'path';
 import * as svg from '../src/lib/svg/index';
-import * as markdown from "../src/lib/markdown";
+import * as markdown from "../src/lib/markdown/markdown";
 // standard
 
 //
