@@ -9,7 +9,7 @@ checks if two lists have the same values in the same order using the default com
 <b>Signature:</b>
 
 ```typescript
-export declare function listsEquivalent(a: string[], b: string[]): boolean;
+export declare function equivalentLists(a: string[], b: string[]): boolean;
 ```
 
 ## Parameters

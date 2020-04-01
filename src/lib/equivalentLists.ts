@@ -5,7 +5,7 @@
  * @param b - a list
  * @returns true if both lists have the same values in the same order.
  */
-export function listsEquivalent(a: string[], b: string[]): boolean {
+export function equivalentLists(a: string[], b: string[]): boolean {
     if (a.length !== b.length) {
         return false;
     }

@@ -24,9 +24,21 @@
 |  [listWithoutWhitespaceElements(original)](./standard-node.listwithoutwhitespaceelements.md) | trims all strings and removes all strings that are pure whitespace from the list. |
 |  [mergeWithDefaults(original, defaults)](./standard-node.mergewithdefaults.md) | create a new object that ensure all default properties are present |
 |  [pascalCase(string)](./standard-node.pascalcase.md) | PascalCase splits on spaces and capitalizes words in between |
+|  [readFileCsv(path)](./standard-node.readfilecsv.md) | Reads a CSV file (does not handle complex CSVs, only splits on <code>,</code>) splits each line on commas |
+|  [readFileJson(path)](./standard-node.readfilejson.md) | Read a file that contains JSON and turn it into an object<!-- -->Note: no validation is done on the data. TODO: add validation of JSON to ensure it conforms to schema to type. |
+|  [readFileLines(path)](./standard-node.readfilelines.md) | Read utf-8 file and transform to standard new lines. |
+|  [readFileList(path)](./standard-node.readfilelist.md) | reads lines from a file and removes the ones that are whitespace. |
+|  [readFileText(path)](./standard-node.readfiletext.md) | Read utf-8 file and transform to standard new lines. |
+|  [removeFile(path)](./standard-node.removefile.md) | removes a file |
 |  [snakeCase(string)](./standard-node.snakecase.md) | snake\_case converts from PascalCase or camelCase to snake\_case |
 |  [standardizeNewlines(string)](./standard-node.standardizenewlines.md) | standardize newlines to proper unix line endings |
 |  [trimEndAllLines(string)](./standard-node.trimendalllines.md) | remove whitespace from the end of all lines |
+|  [writeFileCsv(path, values)](./standard-node.writefilecsv.md) | Writes a CSV file Joins all lists on comma and writes the lines. |
+|  [writeFileJson(path, object)](./standard-node.writefilejson.md) | Transform a data object to a string and write it to the specified path. |
+|  [writeFileLines(path, lines)](./standard-node.writefilelines.md) | Read utf-8 file and transform to standard new lines. |
+|  [writeFileList(path, list)](./standard-node.writefilelist.md) | write a list to a file |
+|  [writeFileListUnique(path, list)](./standard-node.writefilelistunique.md) | Removes all duplicates from the list before writing it. |
+|  [writeFileText(path, string)](./standard-node.writefiletext.md) | write data to path with standard newlines. |
 
 ## Interfaces
 
@@ -39,7 +51,6 @@
 |  Namespace | Description |
 |  --- | --- |
 |  [directory](./standard-node.directory.md) | contains directory manipulation functions |
-|  [file](./standard-node.file.md) | contains file manipulation functions |
 |  [path](./standard-node.path.md) | contains path manipulation functions |
 
 ## Variables

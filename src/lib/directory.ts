@@ -3,7 +3,9 @@
 import * as fs from "fs";
 import * as nodePath from "path";
 import * as standard from "../index";
-import { listsEquivalent } from "./listsEquivalent";
+import { equivalentLists } from "./equivalentLists";
+import { equivalentFiles } from "./equivalentFiles";
+import { removeFile } from "./removeFile";
 
 /**
  * contains directory manipulation functions
@@ -113,7 +115,7 @@ export namespace directory {
 
         const options: RecurseOptions = {
             onFile: (path: string) => {
-                standard.file.remove(path);
+                removeFile(path);
             },
             onAfterDirectories: (path: string) => {
                 fs.rmdirSync(path);
@@ -235,7 +237,7 @@ export namespace directory {
         const subdirectoriesA = getAllSubDirectoriesRecursive(pathA);
         const subdirectoriesB = getAllSubDirectoriesRecursive(pathB);
 
-        if (!listsEquivalent(subdirectoriesA, subdirectoriesB)) {
+        if (!equivalentLists(subdirectoriesA, subdirectoriesB)) {
             // Different subdirectories are present
 
             console.log("Different subdirectories are present");
@@ -276,7 +278,7 @@ export namespace directory {
         const fileNamesA = fileNames(folderA);
         const fileNamesB = fileNames(folderB);
 
-        if (!listsEquivalent(fileNamesA, fileNamesB)) {
+        if (!equivalentLists(fileNamesA, fileNamesB)) {
             // console.log("Different files are present");
             // console.log(a);
             // console.log(b);
@@ -310,7 +312,7 @@ export namespace directory {
             const fileA = a[i];
             const fileB = b[i];
 
-            if (!standard.file.equivalent(fileA, fileB)) {
+            if (!equivalentFiles(fileA, fileB)) {
                 // console.log("Files are not equal");
                 // console.log(fileA);
                 // console.log(fileB);

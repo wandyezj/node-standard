@@ -2,7 +2,21 @@
 
 export { path } from "./lib/path";
 export { directory } from "./lib/directory";
-export { file } from "./lib/file";
+
+// file
+
+export { readFileText } from "./lib/readFileText";
+export { writeFileText } from "./lib/writeFileText";
+export { readFileJson } from "./lib/readFileJson";
+export { writeFileJson } from "./lib/writeFileJson";
+export { readFileLines } from "./lib/readFileLines";
+export { writeFileLines } from "./lib/WriteFileLines";
+export { readFileList } from "./lib/readFileList";
+export { writeFileList } from "./lib/writeFileList";
+export { writeFileListUnique } from "./lib/writeFileListUnique";
+export { removeFile } from "./lib/removeFile";
+export { writeFileCsv } from "./lib/writeFileCsv";
+export { readFileCsv } from "./lib/readFileCsv";
 
 // Numbers
 export { isNumberInRange } from "./lib/isNumberInRange";
@@ -37,7 +51,7 @@ export { punctuation } from "./lib/punctuation";
 export { octdigits } from "./lib/octdigits";
 
 // Lists
-export { listsEquivalent } from "./lib/listsEquivalent";
+export { equivalentLists as listsEquivalent } from "./lib/equivalentLists";
 export {
     listWithoutDuplicateElements,
 } from "./lib/listWithoutDuplicateElements";

@@ -25,7 +25,7 @@ export function testPath() {
     
     console.log("ensure actual/sub/file.txt exists");
     const file = path.join(subdirectory, "file.txt");
-    standard.file.write(file, "test");
+    standard.writeFileText(file, "test");
     
     
     console.log("recurse");
@@ -209,7 +209,7 @@ ${image.title}
     const file = path.join(outManualDirectory, `${image.title}.svg`);
     const text = image.toString();
     console.log(text);
-    standard.file.write(file, text);
+    standard.writeFileText(file, text);
 }
 
 function testSvg() {
