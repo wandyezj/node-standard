@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { path as standardPath } from "./path";
+import { isFile } from "./isFile";
 /**
  * does a file exist at the path?
  * note: returns false if the path exists but it is not a file
@@ -8,5 +8,5 @@ import { path as standardPath } from "./path";
  * @public
  */
 export function exists(path: string): boolean {
-    return fs.existsSync(path) && standardPath.isFile(path);
+    return fs.existsSync(path) && isFile(path);
 }

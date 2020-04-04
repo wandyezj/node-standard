@@ -46,13 +46,6 @@
 |  --- | --- |
 |  [IndentOptions](./standard-node.indentoptions.md) | describe a single level of indent |
 
-## Namespaces
-
-|  Namespace | Description |
-|  --- | --- |
-|  [directory](./standard-node.directory.md) | contains directory manipulation functions |
-|  [path](./standard-node.path.md) | contains path manipulation functions |
-
 ## Variables
 
 |  Variable | Description |

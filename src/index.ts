@@ -1,8 +1,5 @@
 // standard set of functions for doing basic things.
 
-export { path } from "./lib/path";
-export { directory } from "./lib/directory";
-
 // file
 
 export { readFileText } from "./lib/readFileText";

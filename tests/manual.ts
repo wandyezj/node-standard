@@ -44,7 +44,7 @@ export function testPath() {
     // need a way to actually compare
     
     console.log("compare");
-    if (!standard.directory.equivalent(actual, expected)) {
+    if (!standard.directory.equivalentDirectories(actual, expected)) {
         console.log("something wrong");
     }
     
