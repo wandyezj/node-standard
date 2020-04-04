@@ -39,6 +39,9 @@ export { letterHeader } from "./lib/letterHeader";
 export { insertTabs } from "./lib/insertTabs";
 export { capitalize } from "./lib/capitalize";
 export { decapitalize } from "./lib/decapitalize";
+export { isCapitalized } from "./lib/isCapitalized";
+export { isLowerCase } from "./lib/isLowerCase";
+export { isUpperCase } from "./lib/isUpperCase";
 
 export { asciiLowercase } from "./lib/asciiLowercase";
 export { asciiUppercase } from "./lib/asciiUppercase";

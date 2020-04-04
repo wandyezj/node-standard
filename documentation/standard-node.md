@@ -15,7 +15,10 @@
 |  [decapitalize(string)](./standard-node.decapitalize.md) | decapitalize a string |
 |  [indent(string, indent)](./standard-node.indent.md) | indent all lines with the specified level of indent. |
 |  [insertTabs(string, count)](./standard-node.inserttabs.md) | inserts tabs in front of every line in s |
+|  [isCapitalized(word)](./standard-node.iscapitalized.md) | is a words first character uppercase and is a following character not upper case? true: {<code>A</code>, <code>Aa</code>, <code>.A</code>, <code>.a</code>, <code>A.</code>, <code>AaA</code>} false: {<code>a</code>, <code>aA</code>, <code>AA</code>} |
+|  [isLowerCase(word)](./standard-node.islowercase.md) | are a strings \[a-z\] letters all lower case? |
 |  [isNumberInRange(n, minimum, maximum)](./standard-node.isnumberinrange.md) | n is in range \[minimum, maximum\] range is inclusive |
+|  [isUpperCase(string)](./standard-node.isuppercase.md) | are a strings \[a-z\] letters all upper case? |
 |  [isWholeNumber(n)](./standard-node.iswholenumber.md) | Is the number a natural number including zero? |
 |  [letterHeader(n)](./standard-node.letterheader.md) | convert a number to a letter header <code>0 -&gt; A</code> <code>1 -&gt; B</code> <code>26 -&gt; BA</code> <code>27 -&gt; BB</code> etc.. |
 |  [lineSplit(string)](./standard-node.linesplit.md) | split a string into a list of lines |
