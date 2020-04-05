@@ -1,5 +1,5 @@
 import { readFileText } from "./readFileText";
-import * as fs from "fs";
+import { lstatSync } from "fs";
 /**
  * checks if two files are equivalent
  * @param pathA - path of a file
@@ -7,7 +7,7 @@ import * as fs from "fs";
  * @public
  */
 export function equivalentFiles(pathA: string, pathB: string): boolean {
-    if (fs.lstatSync(pathA).size !== fs.lstatSync(pathB).size) {
+    if (lstatSync(pathA).size !== lstatSync(pathB).size) {
         return false;
     }
 

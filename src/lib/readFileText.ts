@@ -1,5 +1,5 @@
 import { standardizeNewlines } from "..";
-import * as fs from "fs";
+import { readFileSync } from "fs";
 
 /**
  * Read utf-8 file and transform to standard new lines.
@@ -7,7 +7,7 @@ import * as fs from "fs";
  * @public
  */
 export function readFileText(path: string): string {
-    let string: string = fs.readFileSync(path, "utf-8");
+    let string: string = readFileSync(path, "utf-8");
 
     // remove the BOM
     // https://en.wikipedia.org/wiki/Byte_order_mark

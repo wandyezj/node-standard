@@ -30,7 +30,8 @@
   },
   "homepage": "https://github.com/wandyezj/standard-node#readme",
   "dependencies": {
-    "@types/node": "10.14.15"
+    "@types/node": "10.14.15",
+    "node": "^10.0.0"
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^7.7.16",

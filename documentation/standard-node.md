@@ -11,7 +11,7 @@
 |  [assertParameterIsNaturalNumber(variable, n)](./standard-node.assertparameterisnaturalnumber.md) | throws if the parameter is not a natural number |
 |  [assertParameterIsNaturalNumberInRange(variable, n, minimum, maximum)](./standard-node.assertparameterisnaturalnumberinrange.md) | throws if the variable is not a natural number in the expected range |
 |  [camelCase(string)](./standard-node.camelcase.md) | camelCase splits on spaces and capitalizes words in between |
-|  [capitalize(string)](./standard-node.capitalize.md) | uppercases the first character in a string. in the case that the first character in the string can not be upper cased (for example a white space character or an empty string) the string is unmodified. |
+|  [capitalize(word)](./standard-node.capitalize.md) | uppercases the first character in a string. in the case that the first character in the string can not be upper cased (for example a white space character or an empty string) the string is unmodified. |
 |  [decapitalize(string)](./standard-node.decapitalize.md) | decapitalize a string |
 |  [indent(string, indent)](./standard-node.indent.md) | indent all lines with the specified level of indent. |
 |  [insertTabs(string, count)](./standard-node.inserttabs.md) | inserts tabs in front of every line in s |

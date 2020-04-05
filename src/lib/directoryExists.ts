@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import { existsSync } from "fs";
 import { isDirectory } from "./isDirectory";
 
 /**
@@ -9,5 +9,5 @@ import { isDirectory } from "./isDirectory";
  * @public
  */
 export function directoryExists(path: string): boolean {
-    return fs.existsSync(path) && isDirectory(path);
+    return existsSync(path) && isDirectory(path);
 }

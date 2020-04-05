@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import { existsSync } from "fs";
 import { equivalentLists } from "./equivalentLists";
 import { equivalentDirectoryFiles } from "./equivalentDirectoryFiles";
 import { join } from "path";
@@ -14,11 +14,11 @@ import { directoryDirectoriesRecursive } from "./directoryDirectoriesRecursive";
  * @public
  */
 export function equivalentDirectories(pathA: string, pathB: string): boolean {
-    if (!fs.existsSync(pathA)) {
+    if (!existsSync(pathA)) {
         throw `Comparison folder does not exist: ${pathA}`;
     }
 
-    if (!fs.existsSync(pathB)) {
+    if (!existsSync(pathB)) {
         throw `Comparison folder does not exist: ${pathB}`;
     }
 

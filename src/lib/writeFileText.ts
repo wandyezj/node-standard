@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import { writeFileSync } from "fs";
 import { standardizeNewlines } from "..";
 
 /**
@@ -9,5 +9,5 @@ import { standardizeNewlines } from "..";
  */
 export function writeFileText(path: string, string: string): void {
     const clean = standardizeNewlines(string);
-    fs.writeFileSync(path, clean);
+    writeFileSync(path, clean);
 }

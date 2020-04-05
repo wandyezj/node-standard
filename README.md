@@ -9,8 +9,22 @@ Standard operations in nice wrappers.
 
 ## Import
 
+Import specific functions:
+
+```typescript
+import { functionName } from "@wandyezj/standard-node";
+```
+
+Import everything under a namespace:
+
 ```typescript
 import * as standard from "@wandyezj/standard-node";
+```
+
+If using webpack add the following to the config file:
+
+```text
+node: { global: true, fs: 'empty' },
 ```
 
 ## About

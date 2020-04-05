@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import { existsSync } from "fs";
 import { isFile } from "./isFile";
 /**
  * does a file exist at the path?
@@ -8,5 +8,5 @@ import { isFile } from "./isFile";
  * @public
  */
 export function exists(path: string): boolean {
-    return fs.existsSync(path) && isFile(path);
+    return existsSync(path) && isFile(path);
 }

@@ -9,14 +9,14 @@ uppercases the first character in a string. in the case that the first character
 <b>Signature:</b>
 
 ```typescript
-export declare function capitalize(string: string): string;
+export declare function capitalize(word: string): string;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  string | <code>string</code> | string to capitalize |
+|  word | <code>string</code> | string to capitalize |
 
 <b>Returns:</b>
 
