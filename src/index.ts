@@ -42,6 +42,7 @@ export { decapitalize } from "./lib/decapitalize";
 export { isCapitalized } from "./lib/isCapitalized";
 export { isLowerCase } from "./lib/isLowerCase";
 export { isUpperCase } from "./lib/isUpperCase";
+export { escapeRegularExpression } from "./lib/escapeRegularExpression";
 
 export { asciiLowercase } from "./lib/asciiLowercase";
 export { asciiUppercase } from "./lib/asciiUppercase";

@@ -13,6 +13,7 @@
 |  [camelCase(string)](./standard-node.camelcase.md) | camelCase splits on spaces and capitalizes words in between |
 |  [capitalize(word)](./standard-node.capitalize.md) | uppercases the first character in a string. in the case that the first character in the string can not be upper cased (for example a white space character or an empty string) the string is unmodified. |
 |  [decapitalize(string)](./standard-node.decapitalize.md) | decapitalize a string |
+|  [escapeRegularExpression(s)](./standard-node.escaperegularexpression.md) | escapes a string so it can be used as a string in a regular expression constructor |
 |  [indent(string, indent)](./standard-node.indent.md) | indent all lines with the specified level of indent. |
 |  [insertTabs(string, count)](./standard-node.inserttabs.md) | inserts tabs in front of every line in s |
 |  [isCapitalized(word)](./standard-node.iscapitalized.md) | is a words first character uppercase and is a following character not upper case? true: {<code>A</code>, <code>Aa</code>, <code>.A</code>, <code>.a</code>, <code>A.</code>, <code>AaA</code>} false: {<code>a</code>, <code>aA</code>, <code>AA</code>} |
