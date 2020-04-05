@@ -55,11 +55,3 @@ Short descriptive memorable names are preferred over longer names.
 
 The same words should be used for the same action, patterns should be applicable as far as possible.
 
-
-## Thoughts
-
-Does it make sense to have the library to eliminate hierarchy in favor of individual importable functions?
-    - may ease maintenance
-    - may ease lookup of functions since there is one place to look
-    - can introduce the concept of function groups later
-
