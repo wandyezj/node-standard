@@ -7,5 +7,5 @@ Does it make sense to have the library to eliminate hierarchy in favor of indivi
     - can introduce the concept of function groups later
 
 Maybe break into two separate packages
-    - standard-node for node functionality
-    - standard for functionality that can work in node and on the web
+    - standard-node - node functionality
+    - standard - pure TypeScript
