@@ -13,5 +13,5 @@ export enum TagType {
      * empty-element tag, such as <line-break />
      * may have attributes
      */
-    Empty
+    Empty,
 }

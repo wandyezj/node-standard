@@ -17,7 +17,7 @@ export class Circle extends ShapeAbstract implements CircleAttributes {
         super.setAttributes([
             ["cx", this.centerX.toString()],
             ["cy", this.centerY.toString()],
-            ["r", this.radius.toString()]
+            ["r", this.radius.toString()],
         ]);
         return super.toString();
     }

@@ -1,6 +1,6 @@
-# node-standard
+# standard-node
 
-Standard node operations in nice wrappers.
+Standard operations in nice wrappers.
 
 * string
 * list
@@ -9,8 +9,22 @@ Standard node operations in nice wrappers.
 
 ## Import
 
+Import specific functions:
+
+```typescript
+import { functionName } from "@wandyezj/standard-node";
+```
+
+Import everything under a namespace:
+
 ```typescript
 import * as standard from "@wandyezj/standard-node";
+```
+
+If using webpack add the following to the config file:
+
+```text
+node: { global: true, fs: 'empty' },
 ```
 
 ## About
@@ -54,3 +68,4 @@ In some cases complete is not possible due to the way that dependency APIs such 
 Short descriptive memorable names are preferred over longer names.
 
 The same words should be used for the same action, patterns should be applicable as far as possible.
+

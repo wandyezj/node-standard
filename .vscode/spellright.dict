@@ -3,3 +3,4 @@ src
 recurse
 const
 svg
+boolean

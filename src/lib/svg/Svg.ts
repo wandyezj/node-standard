@@ -5,14 +5,13 @@ import { Line } from "./Line";
 import { PathAttributes } from "./PathAttributes";
 import { Path } from "./Path";
 import { PenAttributes, PenPath, Pen } from "./Pen";
-import { Style} from ".";
+import { Style } from ".";
 import Shape from "./Shape";
 import TextAttributes from "./TextAttributes";
 import Text from "./Text";
 import StyleAttributes from "./StyleAttributes";
 
 export class Svg {
-
     private _width: number = 0;
     public get width(): number {
         return this._width;
@@ -26,7 +25,7 @@ export class Svg {
     public get height(): number {
         return this._height;
     }
-    
+
     public set height(height: number) {
         this._height = height;
     }
@@ -35,7 +34,7 @@ export class Svg {
     get title(): string {
         return this._title;
     }
-    
+
     set title(title: string) {
         this._title = title;
     }
@@ -53,13 +52,12 @@ export class Svg {
         this.shapes.push(shape);
     }
 
-
     private styleMap: Map<string, Style> = new Map();
 
     /**
-     * adds a style to the SVG 
+     * adds a style to the SVG
      * @param style
-     * @return name of the style added 
+     * @return name of the style added
      */
     public addStyle(style: StyleAttributes): Style {
         const name = style.name;
@@ -71,7 +69,7 @@ export class Svg {
         const created = new Style(style);
 
         this.styleMap.set(name, created);
-        
+
         return created;
     }
 
@@ -105,23 +103,23 @@ export class Svg {
             // horizontal
             const dividerWidth = (this.width / dividers) * i;
             this.addLine({
-                comment:`divider horizontal ${i}`, 
-                beginX: 0, 
-                beginY: dividerWidth, 
+                comment: `divider horizontal ${i}`,
+                beginX: 0,
+                beginY: dividerWidth,
                 endX: this.width,
                 endY: dividerWidth,
-                style
-                });
+                style,
+            });
 
             const dividerHeight = (this.height / dividers) * i;
             this.addLine({
-                comment:`divider vertical ${i}`, 
-                beginX: dividerHeight, 
-                beginY: 0, 
+                comment: `divider vertical ${i}`,
+                beginX: dividerHeight,
+                beginY: 0,
                 endX: dividerHeight,
                 endY: this.height,
-                style
-                });
+                style,
+            });
         }
     }
 
@@ -135,7 +133,7 @@ export class Svg {
     //         while (this.styles.has(key)) {
 
     //         }
-            
+
     //     }
     // }
 
@@ -158,7 +156,6 @@ export class Svg {
         const shapes: string[] = [];
 
         this.shapes.forEach((shape: Shape) => {
-
             const style = shape.style;
             if (style) {
                 const key = style.name;
@@ -176,7 +173,7 @@ export class Svg {
             }
 
             // get svg element for the shape
-            shapes.push(shape.toString());       
+            shapes.push(shape.toString());
         });
 
         const styles: string[] = [];
@@ -189,10 +186,10 @@ export class Svg {
         return `
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
-${title ? `<title>${title}</title>`: ""}
+${title ? `<title>${title}</title>` : ""}
 ${style ? `<style type="text/css">\n${style}\n</style>` : ""}
 ${shapes.join("\n")}
 </svg>
 `.trim();
     }
-} 
+}

@@ -2,9 +2,9 @@ import { StrokeLineJoin } from "./StrokeLineJoin";
 
 export interface StyleOptions {
     fill?: string;
-    
+
     /**
-     * used for lines 
+     * used for lines
      */
     stroke?: string;
 

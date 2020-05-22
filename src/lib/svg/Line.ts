@@ -1,9 +1,7 @@
 import ShapeAbstract from "./ShapeAbstract";
 import { LineAttributes } from "./LineAttributes";
 
-
 export class Line extends ShapeAbstract implements LineAttributes {
-
     public beginX: number;
     public beginY: number;
     public endX: number;
@@ -20,9 +18,9 @@ export class Line extends ShapeAbstract implements LineAttributes {
     public toString(): string {
         super.setAttributes([
             ["x1", this.beginX.toString()],
-            ["y1", this.beginY.toString()], 
+            ["y1", this.beginY.toString()],
             ["x2", this.endX.toString()],
-            ["y2", this.endY.toString()]
+            ["y2", this.endY.toString()],
         ]);
         return super.toString();
     }

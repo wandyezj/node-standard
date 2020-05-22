@@ -1,7 +1,7 @@
 import { PathAttributes } from "./PathAttributes";
 import { Path } from "./Path";
 import { CoordinateLocation } from "./PathCoordinate";
-import * as standard from "../../index";
+import { degreesToRadians } from "../degreesToRadians";
 
 // import { Path } from "./Path";
 // import { Shape, ShapeOptions } from ".";
@@ -20,14 +20,14 @@ export interface Pen {
 
     /**
      * move pen to absolute coordinates
-     * @param length 
+     * @param length
      */
     to(x: number, y: number): Pen;
 
     /**
      * move pen relative to current coordinates
-     * @param x 
-     * @param y 
+     * @param x
+     * @param y
      */
     move(x: number, y: number): Pen;
 
@@ -36,35 +36,32 @@ export interface Pen {
      */
     back(): Pen;
 
-
     /**
      * move the pen forward
-     * @param length 
+     * @param length
      */
     forward(length: number): Pen;
 
     // /**
     //  * move the pen forward
-    //  * @param length 
+    //  * @param length
     //  */
     // backward(length: number): Pen;
 
     /**
      * sets the angle the pen is pointing
-     * @param degrees 
+     * @param degrees
      */
     angle(degrees: number): Pen;
 
     /**
      * rotates the pens angle a certain number of degrees
-     * @param degrees 
+     * @param degrees
      */
     rotate(degrees: number): Pen;
 }
 
-export interface PenAttributes extends PathAttributes {
-
-}
+export interface PenAttributes extends PathAttributes {}
 
 interface Point {
     x: number;
@@ -73,16 +70,23 @@ interface Point {
 }
 
 export class PenPath extends Path implements Pen {
-
     private isDown: boolean = false;
 
-    private previous: Point = {x:0, y:0, location: CoordinateLocation.Absolute};
-    private current: Point = {x:0, y:0, location: CoordinateLocation.Absolute};
-    
+    private previous: Point = {
+        x: 0,
+        y: 0,
+        location: CoordinateLocation.Absolute,
+    };
+    private current: Point = {
+        x: 0,
+        y: 0,
+        location: CoordinateLocation.Absolute,
+    };
+
     private angleDegrees: number = 0;
 
     private get angleRadians(): number {
-        return standard.math.degreesToRadians(this.angleDegrees - 90 * 3);
+        return degreesToRadians(this.angleDegrees - 90 * 3);
     }
 
     constructor(attributes: PenAttributes) {
@@ -121,17 +125,16 @@ export class PenPath extends Path implements Pen {
         }
 
         this.previous = this.current;
-        this.current = {x, y, location};
+        this.current = { x, y, location };
 
         return this;
-
     }
 
     to(x: number, y: number): Pen {
         return this.toPoint({
             x,
             y,
-            location: CoordinateLocation.Absolute
+            location: CoordinateLocation.Absolute,
         });
     }
 
@@ -139,12 +142,11 @@ export class PenPath extends Path implements Pen {
         return this.toPoint({
             x,
             y,
-            location: CoordinateLocation.Relative
+            location: CoordinateLocation.Relative,
         });
     }
 
     back(): Pen {
-
         if (this.previous.location === CoordinateLocation.Absolute) {
             return this.toPoint(this.previous);
         }
@@ -161,7 +163,7 @@ export class PenPath extends Path implements Pen {
     }
 
     angle(degrees: number): Pen {
-        this.angleDegrees = degrees
+        this.angleDegrees = degrees;
         return this;
     }
 
@@ -169,5 +171,4 @@ export class PenPath extends Path implements Pen {
         this.angleDegrees += degrees;
         return this;
     }
-
 }
