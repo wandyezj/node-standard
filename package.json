@@ -8,6 +8,7 @@
     "dist/*"
   ],
   "scripts": {
+    "prepack":"npm run build",
     "test": "jest",
     "prettier-check": "./node_modules/.bin/prettier --check src/**/*.ts",
     "prettier": "./node_modules/.bin/prettier --config .prettierrc.json --write src/**/*.ts",
@@ -31,7 +32,7 @@
   "homepage": "https://github.com/wandyezj/standard-node#readme",
   "dependencies": {
     "@types/node": "10.14.15",
-    "node": "^10.0.0"
+    "node": "^14.0.0"
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^7.7.16",
